@@ -1,8 +1,10 @@
-require('dotenv').config();
-const mongoose = require('mongoose');
-const Project = require('./models/Project');
-const Skill = require('./models/Skill');
-const Testimonial = require('./models/Testimonial');
+import dotenv from 'dotenv';
+import mongoose from 'mongoose';
+import Project from './models/Project.js';
+import Skill from './models/Skill.js';
+import Testimonial from './models/Testimonial.js';
+
+dotenv.config();
 
 const connectDatabase = async () => {
   try {

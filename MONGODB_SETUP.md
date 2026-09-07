@@ -32,17 +32,18 @@ This guide will help you set up MongoDB Atlas and connect your portfolio to the 
 
 ### 2. Configure Your Environment
 
-1. Open the `.env` file in your project root
+1. Copy `server/.env.example` to `server/.env`
 2. Replace `your_mongodb_atlas_connection_string_here` with your connection string
 3. **IMPORTANT**: Replace `<password>` in the connection string with your actual database user password
 4. Add your database name at the end of the connection string
+5. Generate a random `JWT_SECRET` (e.g. `openssl rand -hex 64`) and set your own `ADMIN_EMAIL`/`ADMIN_PASSWORD` — never reuse example credentials from documentation
 
 Example:
 ```
 MONGODB_URI=mongodb+srv://myuser:mypassword@cluster0.xxxxx.mongodb.net/portfolio?retryWrites=true&w=majority
 ```
 
-Your complete `.env` file should look like this:
+Your complete `server/.env` file should look like this:
 ```
 # MongoDB Atlas Connection String
 MONGODB_URI=mongodb+srv://your_username:your_password@cluster0.xxxxx.mongodb.net/portfolio?retryWrites=true&w=majority
@@ -50,10 +51,17 @@ MONGODB_URI=mongodb+srv://your_username:your_password@cluster0.xxxxx.mongodb.net
 # Server Port
 PORT=5000
 
-# Admin Credentials (for authentication)
-ADMIN_EMAIL=admin@simzik.com
-ADMIN_PASSWORD=admin123
+# Long random secret used to sign admin JWTs
+JWT_SECRET=<generate your own, e.g. `openssl rand -hex 64`>
+
+# Comma-separated list of origins allowed to call the API
+ALLOWED_ORIGINS=http://localhost:5173,http://localhost:5174
+
+# Used once by `npm run seed:admin` to create/update the admin account
+ADMIN_EMAIL=<your own admin email>
+ADMIN_PASSWORD=<your own strong password>
 ```
+Run `npm run seed:admin` after setting these to create the admin account.
 
 ### 3. Start Your Application
 
@@ -113,9 +121,7 @@ server/
 1. Start your application: `npm run dev`
 2. Open http://localhost:5173
 3. Scroll to the footer and click the small dot (•) next to the copyright
-4. Login with:
-   - Email: `admin@simzik.com`
-   - Password: `admin123`
+4. Log in with the `ADMIN_EMAIL`/`ADMIN_PASSWORD` you set in `server/.env` (see setup step above)
 5. You can now:
    - Add, edit, and delete projects
    - Manage your skills
@@ -184,12 +190,28 @@ All changes will be saved directly to MongoDB Atlas!
 - Check console for CORS errors
 - Verify API_BASE_URL in `src/services/api.js` matches your backend port
 
+## � Production Deployment
+
+This project deploys as **two separate services**: a static frontend and a standalone API.
+
+### Frontend (Vercel)
+1. Import the repo into Vercel; build command `npm run build`, output directory `dist`.
+2. Set the `VITE_API_URL` environment variable in the Vercel project to your deployed API's URL, e.g. `https://your-api.onrender.com/api`.
+3. `vercel.json` already contains the SPA rewrite needed for client-side routing.
+
+### Backend API (Render / Railway / Fly.io)
+1. Deploy the `server/` directory (or the whole repo with start command `npm start`).
+2. Set environment variables on the host: `MONGODB_URI`, `JWT_SECRET`, `PORT` (if required by the host), `ALLOWED_ORIGINS` (set to your Vercel frontend domain, e.g. `https://your-app.vercel.app`).
+3. Run `npm run seed:admin` once (locally against the production `MONGODB_URI`, or via a one-off host shell) to create the admin account.
+4. Confirm `/api/health` responds once deployed.
+
 ## 🔐 Security Notes
 
 1. **Never commit your `.env` file** - It's already in `.gitignore`
-2. Change the default admin credentials in production
-3. Use strong passwords for your MongoDB users
+2. Never reuse example/default admin credentials — always set your own via `server/.env`
+3. Use strong, unique passwords for your MongoDB users
 4. Restrict IP access in MongoDB Atlas for production
+5. Set `ALLOWED_ORIGINS` to your exact production frontend domain(s) — do not wildcard
 
 ## 📦 Packages Installed
 

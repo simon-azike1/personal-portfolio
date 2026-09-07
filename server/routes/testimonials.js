@@ -53,7 +53,12 @@ router.put('/:id', verifyAdmin, async (req, res) => {
       return res.status(404).json({ message: 'Testimonial not found' });
     }
 
-    Object.assign(testimonial, req.body);
+    const allowedFields = ['name', 'role', 'content', 'rating', 'avatar'];
+    for (const field of allowedFields) {
+      if (field in req.body) {
+        testimonial[field] = req.body[field];
+      }
+    }
     const updatedTestimonial = await testimonial.save();
     res.json(updatedTestimonial);
   } catch (error) {

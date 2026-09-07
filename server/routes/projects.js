@@ -56,7 +56,12 @@ router.put('/:id', verifyAdmin, async (req, res) => {
       return res.status(404).json({ message: 'Project not found' });
     }
 
-    Object.assign(project, req.body);
+    const allowedFields = ['title', 'description', 'image', 'technologies', 'category', 'liveUrl', 'githubUrl', 'featured'];
+    for (const field of allowedFields) {
+      if (field in req.body) {
+        project[field] = req.body[field];
+      }
+    }
     const updatedProject = await project.save();
     res.json(updatedProject);
   } catch (error) {

@@ -53,7 +53,12 @@ router.put('/:id', verifyAdmin, async (req, res) => {
       return res.status(404).json({ message: 'Skill not found' });
     }
 
-    Object.assign(skill, req.body);
+    const allowedFields = ['name', 'category', 'level', 'percentage', 'experience'];
+    for (const field of allowedFields) {
+      if (field in req.body) {
+        skill[field] = req.body[field];
+      }
+    }
     const updatedSkill = await skill.save();
     res.json(updatedSkill);
   } catch (error) {

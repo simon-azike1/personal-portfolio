@@ -1,24 +1,34 @@
 import express from 'express';
 import jwt from 'jsonwebtoken';
+import rateLimit from 'express-rate-limit';
 import Admin from '../models/Admin.js';
 
 const router = express.Router();
 
+// Limit brute-force login attempts per IP
+const loginLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  limit: 10,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { success: false, message: 'Too many login attempts. Please try again later.' },
+});
+
 // POST /api/auth/login
-router.post('/login', async (req, res) => {
+router.post('/login', loginLimiter, async (req, res) => {
   try {
     const { email, password } = req.body;
 
     // Validate input
-    if (!email || !password) {
+    if (!email || typeof email !== 'string' || !password || typeof password !== 'string') {
       return res.status(400).json({
         success: false,
         message: 'Email and password are required'
       });
     }
 
-    // Find admin user by email
-    const admin = await Admin.findOne({ email: email.toLowerCase() });
+    // Find admin user by email (password excluded by schema; select explicitly to compare)
+    const admin = await Admin.findOne({ email: email.toLowerCase() }).select('+password');
 
     if (!admin) {
       return res.status(401).json({
