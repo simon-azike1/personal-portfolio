@@ -1,8 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, ChevronDown, Download } from 'lucide-react';
-import profileAbout from '@/assets/Images/profile-about.jpg';
-import profileMain2 from '@/assets/Images/profile-main2.png';
+import profileAbout from '../../assets/Images/profile-about.jpg';
+import profileMain2 from '../../assets/Images/profile-main2.png';
 import { useI18n } from '../../context/I18nContext';
 
 const Hero = () => {
