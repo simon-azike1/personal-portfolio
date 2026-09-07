@@ -202,3 +202,6 @@ This project is maintained as a personal portfolio. Contact the author before re
 **Simon Azike**
 
 - GitHub: [simon-azike1](https://github.com/simon-azike1)
+
+<img width="944" height="448" alt="image" src="https://github.com/user-attachments/assets/985632a8-9363-4aca-b3d5-d26758fce7e1" />
+
