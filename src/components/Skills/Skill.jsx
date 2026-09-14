@@ -5,16 +5,8 @@ import { useI18n } from '../../context/I18nContext';
 
 const Skills = () => {
   const { t } = useI18n();
-  const [activeCategory, setActiveCategory] = useState('all');
   const [skills, setSkills] = useState([]);
   const [loading, setLoading] = useState(true);
-
-  const categories = [
-    { id: 'all', name: t('skills.categories.all') },
-    { id: 'frontend', name: t('skills.categories.frontend') },
-    { id: 'backend', name: t('skills.categories.backend') },
-    { id: 'tools', name: t('skills.categories.tools') }
-  ];
 
   useEffect(() => {
     fetchSkills();
@@ -32,22 +24,49 @@ const Skills = () => {
     }
   };
 
-  const filteredSkills = activeCategory === 'all'
-    ? skills
-    : skills.filter(skill => skill.category === activeCategory);
-
-  const getLevelColor = (level) => {
-    switch (level) {
-      case 'Expert': return '#0f2a54';
-      case 'Advanced': return '#1f4f89';
-      case 'Intermediate': return '#4a86c5';
-      case 'Beginner': return '#163c6a';
-      default: return '#5a6b82';
+  // Group skills by category
+  const groupedSkills = skills.reduce((acc, skill) => {
+    if (!acc[skill.category]) {
+      acc[skill.category] = [];
     }
-  };
+    acc[skill.category].push(skill);
+    return acc;
+  }, {});
+
+  // Define capability categories with titles and explanations
+  const capabilityCategories = [
+    {
+      id: 'frontend',
+      title: t('skills.capabilities.frontend.title'),
+      explanation: t('skills.capabilities.frontend.explanation'),
+      icon: 'Code', // We'll use Lucide icons
+      skills: groupedSkills.frontend || []
+    },
+    {
+      id: 'backend',
+      title: t('skills.capabilities.backend.title'),
+      explanation: t('skills.capabilities.backend.explanation'),
+      icon: 'Database',
+      skills: groupedSkills.backend || []
+    },
+    {
+      id: 'design',
+      title: t('skills.capabilities.design.title'),
+      explanation: t('skills.capabilities.design.explanation'),
+      icon: 'Palette',
+      skills: [] // We'll extract design-related skills or leave empty for now
+    },
+    {
+      id: 'devops',
+      title: t('skills.capabilities.devops.title'),
+      explanation: t('skills.capabilities.devops.explanation'),
+      icon: 'Server',
+      skills: groupedSkills.tools || [] // Treat tools as DevOps for now
+    }
+  ];
 
   return (
-    <section id="skills" className="py-24 bg-theme-bg-primary">
+    <section id="skills" className="py-24 bg-bg-primary">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         {/* Section header */}
         <motion.div
@@ -57,76 +76,55 @@ const Skills = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold text-theme-text-primary mb-4">
+          <h2 className="text-4xl sm:text-5xl font-bold text-text-primary mb-4">
             {t('skills.title')}
           </h2>
-          <p className="text-lg text-theme-text-secondary max-w-2xl mx-auto">
+          <p className="text-lg text-text-secondary max-w-2xl mx-auto">
             {t('skills.subtitle')}
           </p>
         </motion.div>
 
-        {/* Category Filter */}
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
-          {categories.map((category) => (
-            <button
-              key={category.id}
-              onClick={() => setActiveCategory(category.id)}
-              className={`px-6 py-2 rounded-full font-medium transition-all duration-300 ${
-                activeCategory === category.id
-                  ? 'bg-theme-accent-primary text-white shadow-lg'
-                  : 'bg-theme-bg-secondary text-theme-text-secondary hover:bg-theme-card-hover border border-theme'
-              }`}
-            >
-              {category.name}
-            </button>
-          ))}
-        </div>
-
-        {/* Skills Grid */}
+        {/* Capabilities Grid */}
         {loading ? (
-          <div className="text-center py-12 text-theme-text-tertiary">{t('skills.loading')}</div>
-        ) : filteredSkills.length === 0 ? (
-          <div className="text-center py-12 text-theme-text-tertiary">{t('skills.empty')}</div>
+          <div className="text-center py-12 text-text-tertiary">{t('skills.loading')}</div>
+        ) : Object.keys(groupedSkills).length === 0 ? (
+          <div className="text-center py-12 text-text-tertiary">{t('skills.empty')}</div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredSkills.map((skill, index) => (
-              <motion.div
-                key={skill._id}
-                className="bg-theme-card border border-theme rounded-xl p-6 hover:shadow-lg transition-shadow duration-300"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-              >
-                <div className="flex items-start justify-between mb-4">
-                  <div className="flex-1">
-                    <h3 className="text-xl font-bold text-theme-text-primary mb-2">{skill.name}</h3>
-                    <div className="flex items-center gap-2 text-sm">
-                      <span className="font-medium" style={{ color: getLevelColor(skill.level) }}>
-                        {skill.level}
-                      </span>
-                      <span className="text-theme-text-tertiary">•</span>
-                      <span className="text-theme-text-tertiary">{skill.experience}</span>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {capabilityCategories
+              .filter(category => category.skills.length > 0)
+              .map((category) => (
+                <motion.div
+                  key={category.id}
+                  className="bg-card border border-border rounded-xl p-6 hover:shadow-lg transition-shadow duration-300 hover:border-accent-primary/20"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: capabilityCategories.indexOf(category) * 0.1 }}
+                  viewport={{ once: true }}
+                >
+                  <div className="flex items-start gap-4 mb-4">
+                    <div className="w-10 h-10 flex items-center justify-center bg-accent-primary/10 rounded-xl">
+                      {/* Dynamic icon based on category - for now using a placeholder */}
+                      <span className="text-accent-primary text-2xl">{category.icon.substring(0, 1).toUpperCase()}</span>
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-text-primary">{category.title}</h3>
+                      <p className="text-text-secondary">{category.explanation}</p>
                     </div>
                   </div>
-                  <div className="text-2xl font-bold text-theme-accent-primary">{skill.percentage}%</div>
-                </div>
 
-                <div className="relative h-2 bg-theme-bg-secondary rounded-full overflow-hidden">
-                  <motion.div
-                    className="absolute inset-y-0 left-0 rounded-full"
-                    style={{
-                      width: `${skill.percentage}%`,
-                      backgroundColor: getLevelColor(skill.level)
-                    }}
-                    initial={{ width: 0 }}
-                    whileInView={{ width: `${skill.percentage}%` }}
-                    transition={{ duration: 1, delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                  />
-                </div>
-              </motion.div>
-            ))}
+                  {/* Skills list for this category */}
+                  <div className="space-y-3">
+                    {category.skills.map((skill, index) => (
+                      <div key={skill._id} className="flex items-center gap-3 px-3 py-2 bg-accent-primary/5 rounded-md text-sm">
+                        <span className="w-2 h-2 rounded-full bg-accent-primary"></span>
+                        <span className="text-text-secondary">{skill.name}</span>
+                        <span className="ml-auto text-accent-primary/70 text-xs">{skill.level}</span>
+                      </div>
+                    ))}
+                  </div>
+                </motion.div>
+              ))}
           </div>
         )}
       </div>

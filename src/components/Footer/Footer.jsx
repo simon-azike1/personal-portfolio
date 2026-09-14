@@ -56,7 +56,7 @@ const Footer = () => {
     { 
       name: 'Email', 
       icon: Mail, 
-      url: 'mailto:your.email@example.com'
+      url: 'mailto:azikeshinye@gmail.com'
     }
   ]
 
@@ -78,42 +78,56 @@ const Footer = () => {
   return (
     <>
       {/* Enhanced Footer */}
-      <footer className="bg-theme-bg-tertiary text-theme-text-secondary py-16">
+      <footer className="bg-bg-secondary/50 backdrop-blur-sm border-t border-border">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="space-y-12">
+          <div className="space-y-10">
             {/* Main Footer Content */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
               {/* Brand Section */}
               <motion.div
-                className="space-y-4"
+                className="space-y-6"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
                 viewport={{ once: true }}
               >
                 <a href="#home" className="inline-flex items-center gap-3 group">
-                  <span className="text-2xl font-bold text-theme-accent-primary">SimZik</span>
+                  <span className="relative flex h-10 w-10 items-center justify-center rounded-full bg-accent-primary/20 p-[2px] shadow-md transition-transform duration-300 hover:scale-105">
+                    <span className="h-full w-full rounded-full bg-bg-primary p-[2px]">
+                      <img src="/Images/logo.png" alt="SimZik logo" className="h-full w-full rounded-full object-cover" />
+                    </span>
+                  </span>
+                  <span className="brand-wordmark brand-wordmark-hover text-xl font-bold italic text-text-primary">
+                    SimzikTech
+                  </span>
                 </a>
-                <p className="text-theme-text-secondary leading-relaxed">
+                <p className="text-text-secondary leading-relaxed max-w-md">
                   {t('footer.tagline')}
                 </p>
+                <a
+                  href="#projects"
+                  className="inline-flex items-center gap-3 mt-4 bg-accent-primary/10 rounded-full px-4 py-2 text-accent-primary font-medium hover:bg-accent-primary/20 transition-colors"
+                >
+                  {t('footer.cta')}
+                  <span className="ml-2">→</span>
+                </a>
               </motion.div>
 
               {/* Quick Links */}
               <motion.div
-                className="space-y-4"
+                className="space-y-6"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
                 viewport={{ once: true }}
               >
-                <h3 className="font-bold text-lg text-theme-text-primary">{t('footer.quickLinks')}</h3>
+                <h3 className="font-bold text-lg text-text-primary">{t('footer.quickLinks')}</h3>
                 <div className="flex flex-col gap-2">
                   {quickLinks.map((link, index) => (
                     <motion.a
                       key={link.name}
                       href={link.href}
-                      className="text-theme-text-tertiary hover:text-theme-accent-primary transition-colors inline-block"
+                      className="text-text-tertiary hover:text-accent-primary transition-colors inline-block"
                       whileHover={{ x: 4 }}
                       initial={{ opacity: 0, x: -20 }}
                       whileInView={{ opacity: 1, x: 0 }}
@@ -128,19 +142,19 @@ const Footer = () => {
 
               {/* Social Links */}
               <motion.div
-                className="space-y-4"
+                className="space-y-6"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
                 viewport={{ once: true }}
               >
-                <h3 className="font-bold text-lg text-theme-text-primary">{t('footer.connect')}</h3>
+                <h3 className="font-bold text-lg text-text-primary">{t('footer.connect')}</h3>
                 <div className="flex gap-4">
                   {socialLinks.map((social, index) => (
                     <motion.a
                       key={social.name}
                       href={social.url}
-                      className="w-10 h-10 bg-theme-bg-secondary hover:bg-theme-accent-primary hover:text-white rounded-lg flex items-center justify-center transition-colors"
+                      className="w-10 h-10 bg-bg-secondary/50 hover:bg-accent-primary/20 hover:text-white rounded-lg flex items-center justify-center transition-colors"
                       target="_blank"
                       rel="noopener noreferrer"
                       whileHover={{ y: -4, scale: 1.1 }}
@@ -160,33 +174,33 @@ const Footer = () => {
 
             {/* Footer Bottom */}
             <motion.div
-              className="pt-8 border-t border-theme flex flex-col sm:flex-row items-center justify-between gap-4"
+              className="pt-8 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.3 }}
               viewport={{ once: true }}
             >
               <div className="flex items-center gap-4">
-                <p className="text-theme-text-tertiary text-sm text-center sm:text-left">
-                  © {currentYear} SimZik. Built with passion
+                <p className="text-text-tertiary text-sm text-center sm:text-left">
+                  Â© {currentYear} SimzikTech. {t('footer.builtWithPassion')}
                 </p>
                 <button
                   onClick={() => navigate('/admin/login')}
-                  className="text-theme-text-tertiary hover:text-theme-text-secondary text-xs transition-colors"
+                  className="text-text-tertiary hover:text-text-secondary text-xs transition-colors"
                   aria-label="Admin"
                 >
-                  •
+                  â€¢
                 </button>
               </div>
 
-              <div className="flex items-center gap-2 text-sm text-theme-text-tertiary">
+              <div className="flex items-center gap-2 text-sm text-text-tertiary">
                 <Code size={14} />
-                <span className="text-theme-text-primary">{t('footer.builtWith')}</span>
+                <span className="text-text-primary">{t('footer.builtWith')}</span>
                 <div className="flex gap-2">
                   {techStack.map((tech, index) => (
                     <motion.span
                       key={tech.name}
-                      className="px-2 py-1 bg-theme-bg-secondary rounded text-xs hover:bg-theme-accent-primary hover:text-white transition-colors cursor-default"
+                      className="px-2 py-1 bg-bg-secondary/50 rounded text-xs hover:bg-accent-primary/20 hover:text-white transition-colors cursor-default"
                       whileHover={{ y: -2 }}
                       initial={{ opacity: 0, y: 10 }}
                       whileInView={{ opacity: 1, y: 0 }}
@@ -207,7 +221,7 @@ const Footer = () => {
       <AnimatePresence>
         {showScrollTop && (
           <motion.button
-            className="fixed bottom-8 right-8 w-12 h-12 bg-theme-accent-primary text-white rounded-full flex items-center justify-center shadow-lg hover:bg-theme-accent-hover transition-colors z-50"
+            className="fixed bottom-8 right-8 w-12 h-12 bg-accent-primary text-white rounded-full flex items-center justify-center shadow-lg hover:bg-accent-hover transition-colors z-50"
             onClick={scrollToTop}
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}

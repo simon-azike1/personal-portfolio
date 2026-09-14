@@ -14,7 +14,7 @@ import ProjectsManager from './components/ProjectsManager';
 import SkillsManager from './components/SkillsManager';
 import TestimonialsManager from './components/TestimonialsManager';
 import { useTheme } from '../../context/ThemeContext';
-import logo from '../../assets/logo.png';
+import logo from '/Images/logo.png';
 import { useI18n } from '../../context/I18nContext';
 import LanguageSwitcher from '../../components/LanguageSwitcher';
 

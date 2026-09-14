@@ -3,21 +3,12 @@ export default {
   darkMode: 'class', // ✅ Add this line
   content: [
     "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
+    "./src/**/*.{js,ts,jsx,tsx,css}"
   ],
-  theme: {
-    extend: {
-      colors: {
-        primary: {
-          DEFAULT: '#1f4f89',
-          dark: '#163c6a',
-          light: '#4a86c5',
-        },
-        dark: {
-          DEFAULT: '#0b1628',
-          light: '#111f35',
-        },
-        theme: {
+theme: {
+      extend: {
+        colors: {
+          // CSS variable colors for direct use
           'bg-primary': 'var(--bg-primary)',
           'bg-secondary': 'var(--bg-secondary)',
           'bg-tertiary': 'var(--bg-tertiary)',
@@ -33,21 +24,19 @@ export default {
           'card-hover': 'var(--card-hover)',
           'code-bg': 'var(--code-bg)',
           'code-text': 'var(--code-text)',
+          // Primary palette (if needed elsewhere)
+          primary: {
+            DEFAULT: '#1f4f89',
+            dark: '#163c6a',
+            light: '#4a86c5',
+          },
+          // Dark palette (if needed elsewhere)
+          dark: {
+            DEFAULT: '#0b1628',
+            light: '#111f35',
+          },
         },
       },
-      backgroundColor: {
-        'theme-primary': 'var(--bg-primary)',
-        'theme-secondary': 'var(--bg-secondary)',
-        'theme-card': 'var(--card-bg)',
-      },
-      textColor: {
-        'theme-primary': 'var(--text-primary)',
-        'theme-secondary': 'var(--text-secondary)',
-      },
-      borderColor: {
-        'theme': 'var(--border-color)',
-      },
     },
-  },
   plugins: [],
 }

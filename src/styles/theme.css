@@ -16,9 +16,9 @@
   --text-tertiary: #5a6b82;
   
   /* Accent colors */
-  --accent-primary: #1f4f89;
-  --accent-secondary: #4a86c5;
-  --accent-hover: #163c6a;
+  --accent-primary: #5CBF0D;
+  --accent-secondary: #8FD74A;
+  --accent-hover: #4A9E0A;
   
   /* Border colors */
   --border-color: #d3dbe8;
@@ -37,44 +37,44 @@
   
   /* Code/pre backgrounds */
   --code-bg: #e9f1f8;
-  --code-text: #1f4f89;
+  --code-text: #5CBF0D;
 }
 
-/* Dark Mode */
+/* Dark Mode - Based on Ifex Creatives design language */
 :root[data-theme='dark'] {
-  /* Background colors */
-  --bg-primary: #0b1628;
-  --bg-secondary: #111f35;
-  --bg-tertiary: #172946;
+  /* Background colors - near-black canvas */
+  --bg-primary: #050505;
+  --bg-secondary: #0b0b0b;
+  --bg-tertiary: #111111;
   
-  /* Text colors */
-  --text-primary: #e6edf7;
-  --text-secondary: #b9c6db;
-  --text-tertiary: #8fa3bf;
+  /* Text colors - high contrast */
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.62);
+  --text-tertiary: rgba(255, 255, 255, 0.42);
   
-  /* Accent colors */
-  --accent-primary: #4a86c5;
-  --accent-secondary: #bfe9f7;
-  --accent-hover: #6ea7d6;
+  /* Accent colors - vivid lime-green for creative-technology feel */
+  --accent-primary: #5CBF0D;
+  --accent-secondary: #8FD74A;
+  --accent-hover: #4A9E0A;
   
-  /* Border colors */
-  --border-color: #22324b;
-  --border-light: #172946;
+  /* Border colors - subtle */
+  --border-color: rgba(255, 255, 255, 0.10);
+  --border-light: rgba(255, 255, 255, 0.05);
   
-  /* Shadow colors */
-  --shadow-color: rgba(0, 0, 0, 0.35);
-  --shadow-hover: rgba(0, 0, 0, 0.55);
+  /* Shadow colors - minimal for dark theme */
+  --shadow-color: rgba(0, 0, 0, 0.2);
+  --shadow-hover: rgba(0, 0, 0, 0.3);
   
-  /* Card backgrounds */
-  --card-bg: #111f35;
-  --card-hover: #172946;
+  /* Card backgrounds - subtle dark cards */
+  --card-bg: rgba(255, 255, 255, 0.03);
+  --card-hover: rgba(255, 255, 255, 0.06);
   
   /* Toggle button */
-  --toggle-bg: #172946;
+  --toggle-bg: rgba(255, 255, 255, 0.03);
   
   /* Code/pre backgrounds */
-  --code-bg: #0f1b2f;
-  --code-text: #bfe9f7;
+  --code-bg: rgba(255, 255, 255, 0.03);
+  --code-text: #5CBF0D;
 }
 
 /* Apply theme to body and common elements */

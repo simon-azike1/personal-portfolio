@@ -43,7 +43,7 @@ const Testimonials = () => {
   };
 
   return (
-    <section id="testimonials" className="py-24 bg-theme-bg-primary" aria-label={t('testimonials.sectionLabel')}>
+    <section id="testimonials" className="py-24 bg-bg-secondary" aria-label={t('testimonials.sectionLabel')}>
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         {/* Header */}
         <motion.header
@@ -53,19 +53,19 @@ const Testimonials = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold text-theme-text-primary mb-4">
+          <h2 className="text-4xl sm:text-5xl font-bold text-text-primary mb-4">
             {t('testimonials.title')}
           </h2>
-          <p className="text-lg text-theme-text-secondary max-w-2xl mx-auto">
+          <p className="text-lg text-text-secondary max-w-2xl mx-auto">
             {t('testimonials.subtitle')}
           </p>
         </motion.header>
 
         {/* Testimonials Grid */}
         {loading ? (
-          <div className="text-center py-12 text-theme-text-tertiary">{t('testimonials.loading')}</div>
+          <div className="text-center py-12 text-text-tertiary">{t('testimonials.loading')}</div>
         ) : testimonials.length === 0 ? (
-          <div className="text-center py-12 text-theme-text-tertiary">{t('testimonials.empty')}</div>
+          <div className="text-center py-12 text-text-tertiary">{t('testimonials.empty')}</div>
         ) : (
           <motion.div
             variants={containerVariants}
@@ -78,26 +78,20 @@ const Testimonials = () => {
               <motion.article
                 key={testimonial._id}
                 variants={itemVariants}
-                className="bg-theme-card rounded-xl p-8 space-y-6 hover:shadow-lg transition-shadow duration-300 border border-theme"
+                className="bg-card border border-border rounded-xl p-8 space-y-6 hover:shadow-lg transition-shadow duration-300 hover:border-accent-primary/20"
                 whileHover={{ y: -5 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
               >
-                <div className="text-theme-accent-primary">
+                <div className="text-accent-primary">
                   <Quote size={32} aria-hidden="true" />
                 </div>
 
-                <p className="text-theme-text-secondary leading-relaxed italic">"{testimonial.content}"</p>
+                <p className="text-text-secondary leading-relaxed italic">"{testimonial.content}"</p>
 
-                <div className="pt-4">
-                  <h4 className="font-bold text-theme-text-primary">{testimonial.name}</h4>
-                  <p className="text-sm text-theme-text-tertiary">{testimonial.role}</p>
-                </div>
-
-                <div className="flex gap-1 text-theme-accent-primary text-lg" aria-label={`${testimonial.rating} out of 5 stars`}>
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <span key={i} aria-hidden="true">★</span>
-                  ))}
-                </div>
+<div className="pt-4">
+                   <h4 className="font-bold text-text-primary">{testimonial.name}</h4>
+                   <p className="text-sm text-text-tertiary">{testimonial.role}</p>
+                 </div>
               </motion.article>
             ))}
           </motion.div>

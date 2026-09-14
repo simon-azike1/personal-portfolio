@@ -54,10 +54,10 @@ const Hero = () => {
   return (
     <>
       {/* Hero Section */}
-      <section id="home" className="relative min-h-screen bg-theme-bg-primary overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-theme-bg-secondary via-theme-bg-primary to-theme-bg-secondary"></div>
-        <div className="absolute -top-24 -right-24 h-64 w-64 rounded-full bg-theme-accent-primary/10 blur-3xl"></div>
-        <div className="absolute -bottom-24 -left-24 h-64 w-64 rounded-full bg-theme-accent-secondary/20 blur-3xl"></div>
+      <section id="home" className="relative min-h-screen bg-bg-primary overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-bg-secondary via-bg-primary to-bg-secondary"></div>
+        <div className="absolute -top-24 -right-24 h-64 w-64 rounded-full bg-accent-primary/10 blur-3xl"></div>
+        <div className="absolute -bottom-24 -left-24 h-64 w-64 rounded-full bg-accent-secondary/20 blur-3xl"></div>
 
         <div className="relative max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-24 sm:pt-28 pb-16 sm:pb-20">
           <motion.div
@@ -67,66 +67,48 @@ const Hero = () => {
             className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center min-h-[calc(100vh-10rem)]"
           >
             {/* Text Content */}
-            <div className="space-y-8">
-              <motion.div variants={itemVariants} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-theme-bg-tertiary text-theme-text-secondary text-sm font-medium border border-theme">
-                <span className="h-2 w-2 rounded-full bg-theme-accent-primary"></span>
+            <div className="space-y-6">
+              {/* Eyebrow badge with status dot */}
+              <motion.div variants={itemVariants} className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-accent-primary/10 text-accent-primary text-xs font-medium border border-accent-primary/20">
+                <span className="h-2 w-2 rounded-full bg-accent-primary"></span>
                 {t('nav.available')}
               </motion.div>
 
-              <motion.h1 variants={itemVariants} className="text-5xl sm:text-6xl lg:text-7xl font-bold text-theme-text-primary leading-tight">
-                I'm{' '}
-                <span className="text-theme-accent-primary">
-                  Simon Azike
+              {/* Large headline with accent-highlighted words */}
+              <motion.h1 variants={itemVariants} className="text-5xl sm:text-6xl lg:text-7xl font-bold text-text-primary leading-tight tracking-tighter">
+                We Build{' '}
+                <span className="text-accent-primary">
+                  Modern Digital Experiences
+                </span>
+                {' '}
+                <span className="text-accent-primary">
+                  For Brands Ready To Stand Out
                 </span>
               </motion.h1>
 
-              <motion.div variants={itemVariants} className="text-2xl sm:text-3xl font-medium text-theme-text-secondary">
-                <span>{t('hero.role')}</span>
-              </motion.div>
-
-              <motion.p variants={itemVariants} className="text-lg text-theme-text-secondary leading-relaxed max-w-2xl">
-                {t('hero.intro')}
+              {/* Short supporting paragraph */}
+              <motion.p variants={itemVariants} className="text-lg text-text-secondary leading-relaxed max-w-2xl">
+                We combine strategy, design, and development to create responsive, high-performance websites that help businesses communicate clearly, build trust, and convert attention into action.
               </motion.p>
 
-              <motion.div variants={itemVariants} className="flex flex-wrap gap-4">
+              {/* CTA group */}
+              <motion.div variants={itemVariants} className="flex flex-wrap gap-4 mt-6">
+                {/* Primary CTA */}
                 <button
                   onClick={() => scrollToSection('projects')}
-                  className="btn btn-primary"
+                  className="btn btn-primary hover:-translate-y-0.5 transition-transform duration-300"
                 >
-                  {t('hero.viewWork')}
+                  View Our Work
+                  <span className="ml-2">→</span>
                 </button>
 
+                {/* Secondary CTA */}
                 <button
                   onClick={() => scrollToSection('contact')}
-                  className="btn btn-secondary"
+                  className="btn btn-secondary hover:-translate-y-0.5 transition-transform duration-300"
                 >
-                  {t('hero.contact')}
+                  Let’s Talk
                 </button>
-
-                <a
-                  href="/Azike_Simon_Software_Engineer.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn btn-outline"
-                >
-                  <Download size={18} />
-                  {t('nav.resume')}
-                </a>
-              </motion.div>
-
-              <motion.div variants={itemVariants} className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4">
-                <div className="bg-theme-card border border-theme rounded-xl p-4">
-                  <span className="text-2xl font-bold text-theme-accent-primary block">2+</span>
-                  <span className="text-sm text-theme-text-tertiary">{t('hero.statsYears')}</span>
-                </div>
-                <div className="bg-theme-card border border-theme rounded-xl p-4">
-                  <span className="text-2xl font-bold text-theme-accent-primary block">10+</span>
-                  <span className="text-sm text-theme-text-tertiary">{t('hero.statsProjects')}</span>
-                </div>
-                <div className="bg-theme-card border border-theme rounded-xl p-4">
-                  <span className="text-2xl font-bold text-theme-accent-primary block">5+</span>
-                  <span className="text-sm text-theme-text-tertiary">{t('hero.statsDomains')}</span>
-                </div>
               </motion.div>
             </div>
 
@@ -136,22 +118,14 @@ const Hero = () => {
               className="relative flex justify-center lg:justify-end"
             >
               <div className="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-[26rem] lg:h-[26rem]">
-                <img
-                  src={profileMain2}
-                  alt="Simon Azike - Software Engineer"
-                  className="w-full h-full object-cover rounded-3xl shadow-2xl"
-                />
-                <div className="absolute inset-0 rounded-3xl bg-gradient-to-tr from-theme-accent-primary to-transparent opacity-20"></div>
+<img
+                   src={profileMain2}
+                   alt="Profile image"
+                   className="w-full h-full object-cover rounded-3xl shadow-2xl"
+                 />
+                <div className="absolute inset-0 rounded-3xl bg-gradient-to-tr from-accent-primary to-transparent opacity-20"></div>
 
-                <div className="absolute left-2 sm:-left-6 top-6 sm:top-8 bg-theme-card border border-theme rounded-2xl px-4 py-3 shadow-lg">
-                  <p className="text-sm text-theme-text-tertiary">{t('hero.basedIn')}</p>
-                  <p className="font-semibold text-theme-text-primary">{t('hero.location')}</p>
-                </div>
 
-                <div className="absolute right-2 sm:-right-6 bottom-6 sm:bottom-8 bg-theme-card border border-theme rounded-2xl px-4 py-3 shadow-lg">
-                  <p className="text-sm text-theme-text-tertiary">{t('hero.focus')}</p>
-                  <p className="font-semibold text-theme-text-primary">{t('hero.focusValue')}</p>
-                </div>
               </div>
             </motion.div>
           </motion.div>
@@ -162,7 +136,7 @@ const Hero = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1 }}
-              className="flex flex-col items-center gap-2 rounded-full bg-theme-bg-secondary/80 px-4 py-2 text-theme-text-primary shadow-md backdrop-blur-sm hover:text-theme-accent-primary transition-colors cursor-pointer"
+              className="flex flex-col items-center gap-2 rounded-full bg-bg-secondary/80 px-4 py-2 text-text-primary shadow-md backdrop-blur-sm hover:text-accent-primary transition-colors cursor-pointer"
               onClick={() => scrollToSection("about")}
             >
               <motion.div
@@ -178,7 +152,7 @@ const Hero = () => {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-24 bg-theme-bg-secondary">
+      <section id="about" className="py-24 bg-bg-secondary">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -187,7 +161,7 @@ const Hero = () => {
             viewport={{ once: true }}
           className="text-center mb-16"
         >
-            <h2 className="text-4xl sm:text-5xl font-bold text-theme-text-primary">
+            <h2 className="text-4xl sm:text-5xl font-bold text-text-primary">
               {t('about.title')}
             </h2>
         </motion.div>
@@ -199,35 +173,35 @@ const Hero = () => {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className="bg-theme-card rounded-2xl shadow-lg p-8 border border-theme"
+              className="bg-card rounded-2xl shadow-lg p-8 border border-border"
             >
               <div className="relative w-48 h-48 mx-auto mb-6">
                 <img src={profileAbout} alt="Simon Azike - Professional" className="w-full h-full object-cover rounded-full" />
-                <div className="absolute bottom-2 right-2 w-6 h-6 bg-theme-card rounded-full flex items-center justify-center">
-                  <div className="w-4 h-4 bg-theme-accent-primary rounded-full"></div>
+                <div className="absolute bottom-2 right-2 w-6 h-6 bg-card rounded-full flex items-center justify-center">
+                  <div className="w-4 h-4 bg-accent-primary rounded-full"></div>
                 </div>
               </div>
 
               <div className="text-center space-y-4">
-                <h3 className="text-2xl font-bold text-theme-text-primary">{t('about.name')}</h3>
-                <p className="text-lg text-theme-text-secondary">{t('about.role')}</p>
+                <h3 className="text-2xl font-bold text-text-primary">{t('about.name')}</h3>
+                <p className="text-lg text-text-secondary">{t('about.role')}</p>
 
                 <div className="space-y-3 pt-4">
-                  <div className="flex items-center gap-3 text-theme-text-secondary">
-                    <Mail size={16} className="text-theme-accent-primary" />
+                  <div className="flex items-center gap-3 text-text-secondary">
+                    <Mail size={16} className="text-accent-primary" />
                     <span>azikeshinye@gmail.com</span>
                   </div>
                   <a
                     href={`https://wa.me/212751780853?text=${whatsappMessage}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-3 text-theme-text-secondary hover:text-theme-accent-primary transition-colors"
+                    className="flex items-center gap-3 text-text-secondary hover:text-accent-primary transition-colors"
                   >
-                    <Phone size={16} className="text-theme-accent-primary" />
+                    <Phone size={16} className="text-accent-primary" />
                     <span>+212 751-780853</span>
                   </a>
-                  <div className="flex items-center gap-3 text-theme-text-secondary">
-                    <MapPin size={16} className="text-theme-accent-primary" />
+                  <div className="flex items-center gap-3 text-text-secondary">
+                    <MapPin size={16} className="text-accent-primary" />
                     <span>Sale Rabat, Morocco</span>
                   </div>
                 </div>
@@ -240,24 +214,24 @@ const Hero = () => {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
-              className="bg-theme-card rounded-2xl shadow-lg p-8 border border-theme"
+              className="bg-card rounded-2xl shadow-lg p-8 border border-border"
             >
               <div className="space-y-6">
                 <div>
-                  <h3 className="text-2xl font-bold text-theme-text-primary mb-2">{t('about.journeyTitle')}</h3>
-                  <div className="w-20 h-1 bg-theme-accent-primary"></div>
+                  <h3 className="text-2xl font-bold text-text-primary mb-2">{t('about.journeyTitle')}</h3>
+                  <div className="w-20 h-1 bg-accent-primary"></div>
                 </div>
 
-                <div className="space-y-4 text-theme-text-secondary leading-relaxed">
+                <div className="space-y-4 text-text-secondary leading-relaxed">
                   <p>
                     {t('about.journeyText')}
                   </p>
 
-                  <details className="about-disclosure rounded-xl border border-theme bg-theme-bg-secondary p-4">
-                    <summary className="cursor-pointer text-theme-accent-primary font-medium">
+                  <details className="about-disclosure rounded-xl border border-border bg-bg-secondary/50 p-4">
+                    <summary className="cursor-pointer text-accent-primary font-medium">
                       {t('about.cardiffTitle')}
                     </summary>
-                    <div className="about-disclosure__content mt-3 text-sm text-theme-text-secondary space-y-2">
+                    <div className="about-disclosure__content mt-3 text-sm text-text-secondary space-y-2">
                       <p>
                         {t('about.cardiffBody')}
                       </p>
@@ -265,15 +239,15 @@ const Hero = () => {
                         href="https://www.cardiffmet.ac.uk/"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 text-theme-accent-primary hover:text-theme-accent-hover transition-colors"
+                        className="inline-flex items-center gap-2 text-accent-primary hover:text-accent-hover transition-colors"
                       >
                         {t('about.cardiffLink')}
                       </a>
                     </div>
                   </details>
 
-                  <div className="bg-theme-bg-tertiary p-4 rounded-lg border-l-4 border-theme-accent-primary">
-                    <p className="text-theme-text-secondary">
+                  <div className="bg-bg-secondary/50 p-4 rounded-lg border-l-4 border-accent-primary">
+                    <p className="text-text-secondary">
                       {t('about.journeyNote')}
                     </p>
                   </div>
@@ -281,19 +255,19 @@ const Hero = () => {
 
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4">
                   <div className="text-center">
-                    <span className="text-2xl font-bold text-theme-accent-primary block">2022</span>
-                    <span className="text-sm text-theme-text-tertiary">{t('about.statsStart')}</span>
+                    <span className="text-2xl font-bold text-accent-primary block">2022</span>
+                    <span className="text-sm text-text-tertiary">{t('about.statsStart')}</span>
                   </div>
                   <div className="text-center">
-                    <span className="text-2xl font-bold text-theme-accent-primary block">20+</span>
-                    <span className="text-sm text-theme-text-tertiary">{t('about.statsSkills')}</span>
-                  </div>
+                    <span className="text-2xl font-bold text-accent-primary block">20+</span>
+                    <span className="text-sm text-text-tertiary">{t('about.statsSkills')}</span>
+</div>
                   <div className="text-center">
-                    <span className="text-2xl font-bold text-theme-accent-primary block">∞</span>
-                    <span className="text-sm text-theme-text-tertiary">{t('about.statsPassion')}</span>
-                  </div>
-                </div>
-              </div>
+                    <span className="text-2xl font-bold text-accent-primary block">âˆž</span>
+                    <span className="text-sm text-text-tertiary">{t('about.statsPassion')}</span>
+</div>
+</div>
+               </div>
             </motion.div>
           </div>
         </div>

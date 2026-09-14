@@ -6,7 +6,7 @@
   html {
     font-size: 15px;
   }
-
+  
   body {
     @apply font-sans antialiased;
   }
@@ -14,20 +14,22 @@
 
 @layer components {
   .btn {
-    @apply px-6 py-3 rounded-lg font-medium transition-all duration-300 inline-flex items-center justify-center gap-2;
+    @apply px-6 py-3 rounded-full font-medium transition-all duration-300 inline-flex items-center justify-center gap-2;
   }
   
   .btn-primary {
-    @apply bg-theme-accent-primary text-white hover:bg-theme-accent-hover;
+    @apply bg-accent-primary text-white hover:bg-accent-hover hover:-translate-y-0.5 transition-transform duration-300;
   }
   
-  .btn-secondary {
-    @apply bg-theme-bg-secondary text-theme-text-primary hover:bg-theme-bg-tertiary border border-theme;
-  }
+.btn-secondary {
+     @apply bg-transparent border border-accent-primary opacity-20 hover:bg-accent-primary hover:opacity-10 hover:text-white;
+     color: var(--accent-primary);
+   }
   
-  .btn-outline {
-    @apply border-2 border-theme text-theme-accent-primary hover:bg-theme-accent-primary hover:text-white;
-  }
+.btn-outline {
+     @apply border-2 border-accent-primary hover:bg-accent-primary hover:text-white;
+     color: var(--accent-primary);
+   }
 }
 
 nav button {
@@ -69,7 +71,7 @@ nav button {
     120deg,
     transparent 0%,
     transparent 40%,
-    rgba(31, 79, 137, 0.6) 50%,
+    rgba(92, 191, 13, 0.6) 50%,
     transparent 60%,
     transparent 100%
   );

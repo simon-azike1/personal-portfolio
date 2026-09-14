@@ -200,7 +200,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-24 bg-theme-bg-secondary" aria-label={t('contact.sectionLabel')}>
+    <section id="contact" className="py-24 bg-bg-secondary" aria-label={t('contact.sectionLabel')}>
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         {/* Header */}
         <motion.div
@@ -208,20 +208,20 @@ const Contact = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="mb-16 flex justify-start"
+          className="mb-16"
         >
-          <div className="max-w-2xl text-left">
-            <h2 className="text-4xl sm:text-5xl font-bold text-theme-text-primary mb-4">
+          <div className="text-left">
+            <h2 className="text-4xl sm:text-5xl font-bold text-text-primary mb-4">
               {t('contact.title')}
             </h2>
-            <p className="text-lg text-theme-text-secondary">
+            <p className="text-lg text-text-secondary">
               {t('contact.subtitle')}
             </p>
           </div>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Contact Info */}
+          {/* Contact Info - Left Column */}
           <motion.div
             variants={containerVariants}
             initial="hidden"
@@ -229,7 +229,29 @@ const Contact = () => {
             viewport={{ once: true }}
             className="space-y-8"
           >
-            <div className="space-y-4">
+            {/* Collaborative headline and invitation */}
+            <div className="space-y-6">
+              <h3 className="text-2xl font-bold text-text-primary">
+                {t('contact.invitationTitle')}
+              </h3>
+              <p className="text-text-secondary">
+                {t('contact.invitationDescription')}
+              </p>
+              
+              {/* Availability statement */}
+              <div className="flex items-start gap-4 p-4 bg-bg-secondary/50 rounded-lg border border-accent-primary/20">
+                <div className="w-10 h-10 flex items-center justify-center bg-accent-primary/20 rounded-full">
+                  <span className="h-2 w-2 rounded-full bg-accent-primary"></span>
+                </div>
+                <div>
+                  <h4 className="font-bold text-text-primary">{t('contact.availability')}</h4>
+                  <p className="text-text-secondary">{t('contact.availabilityDescription')}</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Contact Information */}
+            <div className="space-y-6">
               {contactInfo.map((info) => {
                 const Icon = info.icon;
                 return (
@@ -239,18 +261,18 @@ const Contact = () => {
                     href={info.link}
                     target={info.link.startsWith('http') ? '_blank' : '_self'}
                     rel={info.link.startsWith('http') ? 'noopener noreferrer' : ''}
-                    className="flex items-start gap-4 p-6 bg-theme-card rounded-xl hover:shadow-lg transition-shadow duration-300 border border-theme group"
+                    className="flex items-start gap-4 p-6 bg-card rounded-xl hover:shadow-lg transition-shadow duration-300 border border-border group"
                     whileHover={{ y: -5, scale: 1.02 }}
                     transition={{ type: "spring", stiffness: 300, damping: 20 }}
                     aria-label={info.ariaLabel}
                   >
-                    <div className="w-12 h-12 bg-theme-bg-tertiary rounded-lg flex items-center justify-center text-theme-accent-primary group-hover:bg-theme-accent-primary group-hover:text-white transition-colors flex-shrink-0" aria-hidden="true">
+                    <div className="w-12 h-12 bg-bg-secondary/50 rounded-lg flex items-center justify-center text-accent-primary group-hover:bg-accent-primary group-hover:text-white transition-colors flex-shrink-0" aria-hidden="true">
                       <Icon size={24} />
                     </div>
                     <div className="flex-1">
-                      <h3 className="font-bold text-theme-text-primary text-lg mb-1">{info.title}</h3>
-                      <p className="text-theme-accent-primary font-medium mb-1">{info.value}</p>
-                      <span className="text-sm text-theme-text-tertiary">{info.description}</span>
+                      <h3 className="font-bold text-text-primary text-lg mb-1">{info.title}</h3>
+                      <p className="text-accent-primary font-medium mb-1">{info.value}</p>
+                      <span className="text-sm text-text-tertiary">{info.description}</span>
                     </div>
                   </motion.a>
                 );
@@ -260,9 +282,9 @@ const Contact = () => {
             {/* Social Links */}
             <motion.div
               variants={itemVariants}
-              className="bg-theme-card rounded-xl p-6 border border-theme"
+              className="bg-card rounded-xl p-6 border border-border"
             >
-              <h3 className="text-xl font-bold text-theme-text-primary mb-4">{t('contact.connectTitle')}</h3>
+              <h3 className="text-xl font-bold text-text-primary mb-4">{t('contact.connectTitle')}</h3>
               <div className="flex flex-wrap gap-4" role="navigation" aria-label="Social media links">
                 {socialLinks.map(({ icon: Icon, name, url, ariaLabel }) => (
                   <motion.a
@@ -270,7 +292,7 @@ const Contact = () => {
                     href={url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex w-full sm:w-auto items-center justify-center gap-2 px-6 py-3 bg-theme-bg-secondary hover:bg-theme-accent-primary hover:text-white text-theme-text-secondary rounded-lg transition-colors font-medium border border-theme"
+                    className="flex w-full sm:w-auto items-center justify-center gap-2 px-6 py-3 bg-bg-secondary/50 hover:bg-accent-primary/20 hover:text-white text-text-secondary rounded-lg transition-colors font-medium border border-border"
                     whileHover={{ y: -3 }}
                     transition={{ type: "spring", stiffness: 300, damping: 20 }}
                     aria-label={ariaLabel}
@@ -283,17 +305,17 @@ const Contact = () => {
             </motion.div>
           </motion.div>
 
-          {/* Contact Form */}
+          {/* Contact Form - Right Column */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
-            className="bg-theme-card rounded-2xl p-8 shadow-lg border border-theme"
+            className="bg-card rounded-2xl p-8 shadow-lg border border-border"
           >
             <div className="mb-8">
-              <h3 className="text-2xl font-bold text-theme-text-primary mb-2">{t('contact.sendTitle')}</h3>
-              <p className="text-theme-text-secondary">
+              <h3 className="text-2xl font-bold text-text-primary mb-2">{t('contact.sendTitle')}</h3>
+              <p className="text-text-secondary">
                 {t('contact.sendSubtitle')}
               </p>
             </div>
@@ -307,7 +329,7 @@ const Contact = () => {
             >
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="user_name" className="block text-sm font-medium text-theme-text-primary mb-2">
+                  <label htmlFor="user_name" className="block text-sm font-medium text-text-primary mb-2">
                     {t('contact.fullName')} <span className="text-red-500" aria-label={t('contact.required')}>*</span>
                   </label>
                   <input
@@ -316,10 +338,10 @@ const Contact = () => {
                     name="user_name"
                     value={formData.user_name}
                     onChange={handleInputChange}
-                    className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 transition-colors bg-theme-bg-primary text-theme-text-primary ${
+                    className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 transition-colors bg-bg-primary text-text-primary ${
                       fieldErrors.user_name
                         ? 'border-red-300 focus:ring-red-200'
-                        : 'border-theme focus:ring-theme-accent-primary focus:border-theme-accent-primary'
+                        : 'border-border focus:ring-accent-primary/20 focus:border-accent-primary/20'
                     }`}
                     placeholder={t('contact.placeholderName')}
                     required
@@ -335,7 +357,7 @@ const Contact = () => {
                 </div>
 
                 <div>
-                  <label htmlFor="user_email" className="block text-sm font-medium text-theme-text-primary mb-2">
+                  <label htmlFor="user_email" className="block text-sm font-medium text-text-primary mb-2">
                     {t('contact.email')} <span className="text-red-500" aria-label={t('contact.required')}>*</span>
                   </label>
                   <input
@@ -344,10 +366,10 @@ const Contact = () => {
                     name="user_email"
                     value={formData.user_email}
                     onChange={handleInputChange}
-                    className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 transition-colors bg-theme-bg-primary text-theme-text-primary ${
+                    className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 transition-colors bg-bg-primary text-text-primary ${
                       fieldErrors.user_email
                         ? 'border-red-300 focus:ring-red-200'
-                        : 'border-theme focus:ring-theme-accent-primary focus:border-theme-accent-primary'
+                        : 'border-border focus:ring-accent-primary/20 focus:border-accent-primary/20'
                     }`}
                     placeholder={t('contact.placeholderEmail')}
                     required
@@ -364,7 +386,7 @@ const Contact = () => {
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-theme-text-primary mb-2">
+                <label htmlFor="message" className="block text-sm font-medium text-text-primary mb-2">
                   {t('contact.message')} <span className="text-red-500" aria-label={t('contact.required')}>*</span>
                 </label>
                 <textarea
@@ -372,24 +394,24 @@ const Contact = () => {
                   name="message"
                   value={formData.message}
                   onChange={handleInputChange}
-                  className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 transition-colors resize-none bg-theme-bg-primary text-theme-text-primary ${
+                  className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 transition-colors resize-none bg-bg-primary text-text-primary ${
                     fieldErrors.message
                       ? 'border-red-300 focus:ring-red-200'
-                      : 'border-theme focus:ring-theme-accent-primary focus:border-theme-accent-primary'
+                      : 'border-border focus:ring-accent-primary/20 focus:border-accent-primary/20'
                   }`}
-                  placeholder={t('contact.placeholderMessage')}
-                  rows="6"
-                  required
-                  disabled={formStatus === 'loading'}
-                  aria-invalid={!!fieldErrors.message}
-                  aria-describedby={fieldErrors.message ? "message_error" : undefined}
+                    placeholder={t('contact.placeholderMessage')}
+                    rows="6"
+                    required
+                    disabled={formStatus === 'loading'}
+                    aria-invalid={!!fieldErrors.message}
+                    aria-describedby={fieldErrors.message ? "message_error" : undefined}
                 />
                 {fieldErrors.message && (
                   <span id="message_error" className="text-sm text-red-600 mt-1 block" role="alert">
                     {fieldErrors.message}
                   </span>
                 )}
-                <span className="text-sm text-theme-text-tertiary mt-1 block" aria-live="polite">
+                <span className="text-sm text-text-tertiary mt-1 block" aria-live="polite">
                   {formData.message.length} {t('contact.count')}
                 </span>
               </div>
@@ -397,8 +419,8 @@ const Contact = () => {
               <motion.button
                 type="submit"
                 className={`w-full btn ${
-                  formStatus === 'success' ? 'bg-theme-accent-primary hover:bg-theme-accent-hover text-white' :
-                  formStatus === 'error' ? 'bg-red-500 hover:bg-red-600 text-white' :
+                  formStatus === 'success' ? 'bg-accent-primary hover:bg-accent-hover text-white' : 
+                  formStatus === 'error' ? 'bg-red-500 hover:bg-red-600 text-white' : 
                   'btn-primary'
                 } disabled:opacity-50 disabled:cursor-not-allowed`}
                 disabled={formStatus === 'loading'}
@@ -434,18 +456,18 @@ const Contact = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
-                  className="mt-6 p-4 bg-theme-bg-secondary border border-theme rounded-lg flex items-start gap-3"
+                  className="mt-6 p-4 bg-bg-secondary/50 border border-border rounded-lg flex items-start gap-3"
                   role="alert"
                   aria-live="polite"
                 >
-                  <CheckCircle size={20} className="text-theme-accent-primary flex-shrink-0 mt-0.5" aria-hidden="true" />
+                  <CheckCircle size={20} className="text-accent-primary flex-shrink-0 mt-0.5" aria-hidden="true" />
                   <div className="flex-1">
-                    <h4 className="font-bold text-theme-text-primary">{t('contact.successTitle')}</h4>
-                    <p className="text-sm text-theme-text-secondary">{t('contact.successBody')}</p>
+                    <h4 className="font-bold text-text-primary">{t('contact.successTitle')}</h4>
+                    <p className="text-sm text-text-secondary">{t('contact.successBody')}</p>
                   </div>
                   <button
                     onClick={handleDismissMessage}
-                    className="text-theme-accent-primary hover:text-theme-accent-hover transition-colors"
+                    className="text-accent-primary hover:text-accent-hover transition-colors"
                     aria-label="Dismiss success message"
                   >
                     <XCircle size={18} />
@@ -482,28 +504,7 @@ const Contact = () => {
           </motion.div>
         </div>
 
-        {/* CTA Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="mt-16 bg-gradient-to-r from-theme-accent-primary to-theme-accent-secondary rounded-2xl p-6 sm:p-12 text-center text-white"
-        >
-          <h3 className="text-3xl font-bold mb-4">{t('contact.ctaTitle')}</h3>
-          <p className="text-lg mb-8 text-white/80">{t('contact.ctaBody')}</p>
-          <motion.a
-            href="mailto:azikeshinye@gmail.com"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-theme-bg-primary text-theme-accent-primary rounded-lg font-medium hover:bg-theme-bg-secondary transition-colors shadow-lg"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            aria-label="Send email directly to azikeshinye@gmail.com"
-            target='_blank'
-          >
-            <Mail size={18} aria-hidden="true"/>
-            {t('contact.ctaButton')}
-          </motion.a>
-        </motion.div>
+        
       </div>
     </section>
   );
