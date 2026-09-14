@@ -12,7 +12,7 @@ const Loading = () => {
     // In a real app, this would be controlled by actual data loading
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 1500); // 1.5 seconds
+    }, 3000); // 3 seconds
 
     return () => clearTimeout(timer);
   }, []);
@@ -31,13 +31,13 @@ const Loading = () => {
         className="flex flex-col items-center gap-4"
       >
         <div className="relative w-16 h-16 flex items-center justify-center bg-accent-primary/10 rounded-full">
-          <motion.img
-            src={logo}
-            alt="SimZik Logo"
-            className="w-12 h-12"
-            animate={{ scale: [0.8, 1, 0.8] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          />
+<motion.img
+             src={logo}
+             alt="SimZik Logo"
+             className="w-12 h-12"
+             animate={{ scale: [0.7, 1.3, 0.7] }}
+             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+           />
           <div className="absolute inset-0 rounded-full border-2 border-accent-primary/20 animate-pulse"></div>
         </div>
       </motion.div>
