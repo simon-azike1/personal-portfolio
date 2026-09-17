@@ -46,7 +46,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 // CORS Middleware - explicit allow-list, no wildcard vercel.app match
-const allowedOrigins = (process.env.ALLOWED_ORIGINS || 'http://localhost:5173,http://localhost:5174')
+const allowedOrigins = (process.env.ALLOWED_ORIGINS || 'https://personal-portfolio-ten-lime-93.vercel.app/,http://localhost:5173,http://localhost:5174')
   .split(',')
   .map((origin) => origin.trim());
 
