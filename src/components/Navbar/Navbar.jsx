@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { Menu, X, Github, Linkedin, Twitter, Sun, Moon, Download } from 'lucide-react';
+import { Menu, X, Github, Facebook, Instagram, Music2, Sun, Moon, Download, Youtube } from 'lucide-react';
 import { useTheme } from '../../context/ThemeContext';
 import logo from '/Images/logo.png';
 import { useI18n } from '../../context/I18nContext';
@@ -36,9 +36,12 @@ const Navbar = () => {
   ];
 
   const socialLinks = [
-    { name: 'GitHub', icon: Github, url: 'https://github.com/samzik234' },
-    { name: 'LinkedIn', icon: Linkedin, url: 'https://www.linkedin.com/in/simonzik/' },
-    { name: 'Twitter', icon: Twitter, url: 'https://www.instagram.com/simonazike155/' }
+    { name: 'GitHub', icon: Github, url: 'https://github.com/simon-azike1' },
+    { name: 'YouTube', icon: Youtube, url: 'https://www.youtube.com/@SimzikTech' },
+    { name: 'Facebook', icon: Facebook, url: 'https://www.facebook.com/simon.azike/' },
+    { name: 'Instagram', icon: Instagram, url: 'https://www.instagram.com/azikeshinye/' },
+    { name: 'X', icon: X, url: 'https://x.com/SimonAzike75984' },
+    { name: 'TikTok', icon: Music2, url: 'https://vm.tiktok.com/ZS9AdRJ2hEkFB-jKJhr/' }
   ];
 
   // Scroll spy
@@ -133,7 +136,7 @@ const Navbar = () => {
 
 {/* Desktop Actions */}
              <div className="hidden lg:flex items-center gap-4">
-               {socialLinks.slice(0, 2).map(({ name, icon: Icon, url }) => (
+               {socialLinks.map(({ name, icon: Icon, url }) => (
                  <a
                    key={name}
                    href={url}

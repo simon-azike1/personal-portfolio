@@ -5,11 +5,14 @@ import {
   Phone,
   MapPin,
   Github,
-  Linkedin,
+  Facebook,
+  Instagram,
+  Music2,
   Send,
   CheckCircle,
   AlertCircle,
   XCircle,
+  X,
   Youtube
 } from 'lucide-react';
 import { useI18n } from '../../context/I18nContext';
@@ -63,16 +66,34 @@ const Contact = () => {
       ariaLabel: 'Visit my GitHub profile'
     },
     {
-      icon: Linkedin,
-      name: 'LinkedIn',
-      url: 'https://www.linkedin.com/in/simonzik/',
-      ariaLabel: 'Visit my LinkedIn profile'
-    },
-    {
       icon: Youtube,
       name: 'YouTube',
-      url: 'https://www.youtube.com/@SamzikTech',
+      url: 'https://www.youtube.com/@SimzikTech',
       ariaLabel: 'Visit my YouTube channel'
+    },
+    {
+      icon: Facebook,
+      name: 'Facebook',
+      url: 'https://www.facebook.com/simon.azike/',
+      ariaLabel: 'Visit my Facebook profile'
+    },
+    {
+      icon: Instagram,
+      name: 'Instagram',
+      url: 'https://www.instagram.com/azikeshinye/',
+      ariaLabel: 'Visit my Instagram profile'
+    },
+    {
+      icon: X,
+      name: 'X',
+      url: 'https://x.com/SimonAzike75984',
+      ariaLabel: 'Visit my X profile'
+    },
+    {
+      icon: Music2,
+      name: 'TikTok',
+      url: 'https://vm.tiktok.com/ZS9AdRJ2hEkFB-jKJhr/',
+      ariaLabel: 'Visit my TikTok profile'
     }
   ];
 

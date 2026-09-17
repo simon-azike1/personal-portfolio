@@ -4,10 +4,14 @@ import { motion, AnimatePresence } from 'framer-motion'
 import {
   ArrowUp,
   ArrowUpRight,
+  Facebook,
   Github,
-  Linkedin,
+  Instagram,
   Mail,
-  Code
+  Code,
+  Music2,
+  X,
+  Youtube
 } from 'lucide-react'
 import { useI18n } from '../../context/I18nContext'
 
@@ -43,22 +47,13 @@ const Footer = () => {
 
   // Social links data
   const socialLinks = [
-    { 
-      name: 'GitHub', 
-      icon: Github, 
-      url: 'https://github.com/simon-azike1'
-    },
-    { 
-      name: 'LinkedIn', 
-      icon: Linkedin, 
-      url: 'https://www.linkedin.com/in/simonzik/'
-    },
-    
-    { 
-      name: 'Email', 
-      icon: Mail, 
-      url: 'mailto:azikeshinye@gmail.com'
-    }
+    { name: 'GitHub', icon: Github, url: 'https://github.com/simon-azike1' },
+    { name: 'YouTube', icon: Youtube, url: 'https://www.youtube.com/@SimzikTech' },
+    { name: 'Facebook', icon: Facebook, url: 'https://www.facebook.com/simon.azike/' },
+    { name: 'Instagram', icon: Instagram, url: 'https://www.instagram.com/azikeshinye/' },
+    { name: 'X', icon: X, url: 'https://x.com/SimonAzike75984' },
+    { name: 'TikTok', icon: Music2, url: 'https://vm.tiktok.com/ZS9AdRJ2hEkFB-jKJhr/' },
+    { name: 'Email', icon: Mail, url: 'mailto:azikeshinye@gmail.com' }
   ]
 
   // Quick links data
@@ -222,7 +217,7 @@ const Footer = () => {
       <AnimatePresence>
         {showScrollTop && (
           <motion.button
-            className="fixed bottom-6 right-6 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-accent-primary text-white shadow-lg transition-colors hover:bg-accent-hover sm:bottom-8 sm:right-8"
+            className="fixed bottom-6 right-6 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-accent-primary text-white shadow-lg transition-colors hover:bg-accent-hover sm:bottom-8 sm:right-20"
             onClick={scrollToTop}
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
