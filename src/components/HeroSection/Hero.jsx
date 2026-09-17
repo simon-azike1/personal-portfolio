@@ -118,7 +118,7 @@ const Hero = () => {
                 </button>
                 <button
                   onClick={() => scrollToSection('contact')}
-                  className="btn btn-secondary"
+                  className="btn btn-secondary hidden sm:inline-flex"
                 >
                   {t('hero.contact')}
                 </button>

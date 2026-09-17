@@ -17,9 +17,6 @@ const VerticalNav = () => {
   const [activeSection, setActiveSection] = useState('home');
   const [isScrolled, setIsScrolled] = useState(false);
 
-  // Hide vertical nav on admin pages
-  if (location.pathname.startsWith('/admin')) return null;
-
   const navItems = [
     { id: 'home', name: t('nav.home'), icon: Home },
     { id: 'about', name: t('nav.about'), icon: User },
@@ -57,14 +54,18 @@ const VerticalNav = () => {
   const scrollTo = (id) => {
     const el = document.getElementById(id);
     if (!el) return;
-    window.scrollTo({ top: el.offsetTop - 80, behavior: 'smooth' });
+    const offset = window.innerWidth < 768 ? 136 : 80;
+    window.scrollTo({ top: el.offsetTop - offset, behavior: 'smooth' });
   };
 
+  // Hide vertical nav on admin pages
+  if (location.pathname.startsWith('/admin')) return null;
+
   return (
-    <nav className={`fixed left-0 top-14 bottom-0 w-14 z-40 flex items-center ${
+    <nav className={`fixed left-0 right-0 top-[72px] h-14 z-40 flex items-center md:right-auto md:top-14 md:bottom-0 md:h-auto md:w-14 ${
       isScrolled ? 'bg-bg-primary/90 backdrop-blur-sm border-r border-border' : 'bg-bg-primary/50 backdrop-blur-sm'
     }`}>
-      <div className="flex flex-col h-full items-center justify-center gap-6 p-4">
+      <div className="flex h-full w-full items-center justify-evenly gap-1 px-2 md:flex-col md:justify-center md:gap-6 md:p-4">
         {navItems.map((item) => (
           <button
             key={item.id}

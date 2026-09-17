@@ -37,7 +37,7 @@ function App() {
         <>
           <Navbar />
           <VerticalNav />
-          <main className="pt-20 px-6 lg:px-12 mx-auto max-w-7xl">
+          <main className="pt-36 px-6 md:pt-20 lg:px-12 mx-auto max-w-7xl">
             <Hero />
             <Skill />
             <Project />
