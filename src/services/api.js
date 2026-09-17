@@ -34,7 +34,8 @@ const apiCall = async (
     const response = await fetch(url, options);
 
     if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+      const errorBody = await response.json().catch(() => null);
+      throw new Error(errorBody?.message || `HTTP error! status: ${response.status}`);
     }
 
     return await response.json();
@@ -58,6 +59,10 @@ export const skillsAPI = {
 export const testimonialsAPI = {
   getAll: () => apiCall('/testimonials'),
   getById: (id) => apiCall(`/testimonials/${id}`),
+};
+
+export const contactAPI = {
+  send: (data) => apiCall('/contact', 'POST', data),
 };
 
 // ================= ADMIN APIs =================

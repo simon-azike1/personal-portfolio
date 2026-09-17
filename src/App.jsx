@@ -8,6 +8,7 @@ import Project from './components/Projects/Projects';
 import Testimonials from './components/Testimonials/Testimonials';
 import Contact from './Pages/Contact/Contact';
 import Footer from './components/Footer/Footer';
+import ChatWidget from './components/ChatWidget/ChatWidget';
 import Loading from './components/Loading/Loading';
 import AdminLogin from './Pages/Admin/AdminLogin';
 import AdminDashboard from './Pages/Admin/AdminDashboard';
@@ -44,6 +45,7 @@ function App() {
             <Contact />
           </main>
           <Footer />
+          <ChatWidget />
         </>
       )}
     </div>

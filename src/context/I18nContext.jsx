@@ -20,11 +20,11 @@ const translations = {
             toggleMenu: 'Toggle mobile menu'
         },
         hero: {
-            role: 'Software & Network Engineer',
+            role: 'Software Engineer',
             intro:
-                'I build secure, efficient, high-performing digital systems. My work blends polished front-end experiences with dependable infrastructure across React, JavaScript, and network technologies.',
+                'I build polished web experiences that are fast, clear, and built to convert.',
             viewWork: 'View Work',
-            contact: 'Contact',
+            contact: 'Let’s Talk',
             statsYears: 'Years Experience',
             statsProjects: 'Projects Completed',
             statsDomains: 'Tech Domains',
@@ -35,14 +35,14 @@ const translations = {
             scroll: 'Scroll to explore'
         },
 about: {
-             title: '',
+             title: 'About me',
              name: 'Simon Azike',
              role: 'Software Engineer',
              journeyTitle: 'My Journey',
              journeyText:
-                 'I discovered my passion for coding shortly after starting at Cardiff Metropolitan University on August 3rd, 2022. Coming from a high school background in Electrical and Electronics, programming quickly became more than a skill.',
+                 'I discovered my passion for coding shortly after beginning my studies at Cardiff Metropolitan University on August 3rd, 2022. Coming from a background in Electrical and Electronics, programming quickly became more than a skill.',
              journeyNote:
-                 "It's now a craft I enjoy, constantly learning and creating solutions that make an impact.",
+                 "It is now a craft I enjoy, constantly learning and creating solutions that make an impact.",
              statsStart: 'Started Journey',
              statsSkills: 'Skills Learned',
              statsPassion: 'Passion Level',
@@ -83,9 +83,9 @@ about: {
             noSkillsAvailable: 'No skills available in this category.'
         },
 projects: {
-             title: '',
+             title: 'Selected Projects',
              subtitle:
-                 'A curated selection of projects showcasing web development expertise across frontend and full-stack solutions.',
+                 'A curated selection of projects showcasing design thinking, product thinking, and reliable web development.',
              sectionLabel: 'Portfolio Projects',
              metaTitle: 'What you will find',
              metaOne: 'Product-focused builds with clean UX and maintainable architecture.',

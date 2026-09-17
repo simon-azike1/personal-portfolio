@@ -43,7 +43,15 @@ const Testimonials = () => {
   };
 
   return (
-    <section id="testimonials" className="py-24 bg-bg-secondary" aria-label={t('testimonials.sectionLabel')}>
+    <motion.section
+      id="testimonials"
+      className="py-24 bg-bg-secondary"
+      aria-label={t('testimonials.sectionLabel')}
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.7, ease: 'easeOut' }}
+      viewport={{ once: true, amount: 0.12 }}
+    >
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         {/* Header */}
         <motion.header
@@ -97,7 +105,7 @@ const Testimonials = () => {
           </motion.div>
         )}
       </div>
-    </section>
+    </motion.section>
   );
 };
 

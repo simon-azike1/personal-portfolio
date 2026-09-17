@@ -50,7 +50,15 @@ const Projects = () => {
   };
 
   return (
-    <section id="projects" className="py-24 bg-bg-secondary" aria-label={t('projects.sectionLabel')}>
+    <motion.section
+      id="projects"
+      className="py-24 bg-bg-secondary"
+      aria-label={t('projects.sectionLabel')}
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.7, ease: 'easeOut' }}
+      viewport={{ once: true, amount: 0.12 }}
+    >
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         {/* Header */}
         <motion.header
@@ -106,38 +114,40 @@ const Projects = () => {
                 onClick={() => setSelectedProject(project)}
               >
                 {/* Project Image */}
-                <div className="relative aspect-[16/9] w-full">
+                <div className="relative aspect-[16/9] w-full overflow-hidden">
                   <img
                     src={project.image}
                     alt={`${project.title} project preview`}
-                    className="w-full h-full object-cover"
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-                  {/* Hover overlay */}
-                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    {project.liveUrl && (
-                      <a
-                        href={project.liveUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2 bg-accent-primary/20 rounded-full px-3 py-1 text-accent-primary hover:bg-accent-primary hover:text-white transition-colors"
-                        aria-label={`View ${project.title} live`}
-                      >
-                        <ExternalLink size={16} />
-                        <span>Live</span>
-                      </a>
-                    )}
-                    {project.githubUrl && (
-                      <a
-                        href={project.githubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2 bg-accent-primary/20 rounded-full px-3 py-1 text-accent-primary hover:bg-accent-primary hover:text-white transition-colors"
-                        aria-label={`View ${project.title} source code`}
-                      >
-                        <Github size={16} />
-                        <span>Code</span>
-                      </a>
-                    )}
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/30 to-transparent opacity-0 transition-all duration-300 group-hover:opacity-100" />
+                  <div className="absolute inset-x-0 bottom-0 translate-y-4 p-4 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+                    <div className="flex items-center gap-3">
+                      {project.liveUrl && (
+                        <a
+                          href={project.liveUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-2 rounded-full bg-accent-primary px-3 py-1.5 text-xs font-medium text-white transition-colors hover:bg-accent-hover"
+                          aria-label={`View ${project.title} live`}
+                        >
+                          <ExternalLink size={14} />
+                          <span>Live</span>
+                        </a>
+                      )}
+                      {project.githubUrl && (
+                        <a
+                          href={project.githubUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-2 rounded-full bg-white/10 px-3 py-1.5 text-xs font-medium text-white transition-colors hover:bg-white/20"
+                          aria-label={`View ${project.title} source code`}
+                        >
+                          <Github size={14} />
+                          <span>Code</span>
+                        </a>
+                      )}
+                    </div>
                   </div>
                 </div>
 
@@ -203,62 +213,77 @@ const Projects = () => {
               onClick={() => setSelectedProject(null)}
             >
               <motion.div
-                initial={{ scale: 0.9, y: 50 }}
-                animate={{ scale: 1, y: 0 }}
-                exit={{ scale: 0.9, y: 50 }}
-                className="bg-card rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto relative border border-border"
+                initial={{ scale: 0.94, y: 40, opacity: 0 }}
+                animate={{ scale: 1, y: 0, opacity: 1 }}
+                exit={{ scale: 0.96, y: 24, opacity: 0 }}
+                className="relative max-h-[calc(100vh-2rem)] w-full max-w-5xl overflow-y-auto rounded-[2rem] border border-border bg-bg-primary shadow-[0_30px_80px_rgba(15,23,42,0.65)]"
                 onClick={(e) => e.stopPropagation()}
               >
                 <button
-                  className="absolute top-4 right-4 w-10 h-10 rounded-full bg-bg-secondary/50 border border-accent-primary/20 flex items-center justify-center text-accent-primary hover:bg-accent-primary/20 transition-colors z-10"
+                  className="sticky right-4 top-4 z-20 ml-auto flex h-11 w-11 translate-y-4 items-center justify-center rounded-full border border-border bg-bg-tertiary text-text-primary shadow-lg transition hover:bg-accent-primary hover:text-white"
                   onClick={() => setSelectedProject(null)}
                   aria-label="Close project details"
                 >
                   <X size={20} />
                 </button>
 
-                <div className="aspect-video overflow-hidden rounded-t-2xl">
+                <div className="relative -mt-11 h-[280px] w-full overflow-hidden md:h-[360px]">
                   <img
                     src={selectedProject.image}
                     alt={selectedProject.title}
-                    className="w-full h-full object-cover"
+                    className="h-full w-full object-cover"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-bg-primary via-bg-primary/35 to-transparent" />
                 </div>
 
-                <div className="p-8 space-y-6">
-                  <div>
-                    <h3 className="text-3xl font-bold text-text-primary mb-2">{selectedProject.title}</h3>
-                    <div className="flex items-center gap-2 text-text-tertiary">
-                      <span className="px-3 py-1 bg-bg-secondary/50 text-accent-primary rounded-full text-sm font-medium border border-accent-primary/20">{selectedProject.category}</span>
-                      {selectedProject.featured && (
-                        <>
-                          <span>•</span>
-                          <span className="text-accent-secondary">{t('projects.featured')}</span>
-                        </>
-                      )}
+                <div className="space-y-6 p-6 md:p-8">
+                  <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+                    <div>
+                      <h3 className="mb-3 text-3xl font-bold tracking-tight text-text-primary md:text-4xl">
+                        {selectedProject.title}
+                      </h3>
+                      <div className="flex flex-wrap items-center gap-3 text-sm text-text-secondary">
+                        <span className="rounded-full border border-accent-primary/30 bg-accent-primary/10 px-3 py-1 font-medium text-accent-primary">
+                          {selectedProject.category}
+                        </span>
+                        {selectedProject.featured && (
+                          <span className="rounded-full border border-accent-secondary/30 bg-accent-secondary/10 px-3 py-1 font-medium text-accent-secondary">
+                            {t('projects.featured')}
+                          </span>
+                        )}
+                      </div>
                     </div>
                   </div>
 
-                  <div className="space-y-4">
-                    <h4 className="text-xl font-bold text-text-primary">{t('projects.overview')}</h4>
-                    <p className="text-text-secondary leading-relaxed">{selectedProject.description}</p>
+                  <div className="grid gap-8 lg:grid-cols-[1.3fr_0.7fr]">
+                    <div className="space-y-5">
+                      <div>
+                        <h4 className="mb-3 text-xl font-bold text-text-primary">{t('projects.overview')}</h4>
+                        <p className="text-base leading-7 text-text-secondary">{selectedProject.description}</p>
+                      </div>
 
-                    <h4 className="text-xl font-bold text-text-primary pt-4">{t('projects.technologies')}</h4>
-                    <div className="flex flex-wrap gap-2">
-                      {selectedProject.technologies.map((tech, index) => (
-                        <span key={index} className="px-4 py-2 bg-bg-secondary/50 text-text-secondary rounded-lg text-sm font-medium border border-border">
-                          {tech}
-                        </span>
-                      ))}
+                      <div>
+                        <h4 className="mb-3 text-xl font-bold text-text-primary">{t('projects.technologies')}</h4>
+                        <div className="flex flex-wrap gap-2">
+                          {selectedProject.technologies.map((tech, index) => (
+                            <span
+                              key={index}
+                              className="rounded-xl border border-border bg-bg-secondary px-3 py-2 text-sm font-medium text-text-secondary"
+                            >
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
                     </div>
 
-                    <div className="flex flex-wrap gap-4 pt-6">
+                    <div className="flex flex-col gap-3 pt-1">
                       {selectedProject.liveUrl && (
                         <a
                           href={selectedProject.liveUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="btn btn-primary w-auto py-3 px-6"
+                          className="inline-flex items-center justify-center gap-2 rounded-full bg-accent-primary px-5 py-3 text-sm font-semibold text-white transition hover:bg-accent-hover"
                         >
                           <ExternalLink size={18} />
                           {t('projects.viewLive')}
@@ -269,7 +294,7 @@ const Projects = () => {
                           href={selectedProject.githubUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="btn btn-outline w-auto py-3 px-6"
+                          className="inline-flex items-center justify-center gap-2 rounded-full border border-accent-primary/50 bg-transparent px-5 py-3 text-sm font-semibold text-accent-primary transition hover:bg-accent-primary/10"
                         >
                           <Github size={18} />
                           {t('projects.viewCode')}
@@ -283,7 +308,7 @@ const Projects = () => {
           )}
         </AnimatePresence>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

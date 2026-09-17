@@ -42,10 +42,10 @@
 
 /* Dark Mode - Based on Ifex Creatives design language */
 :root[data-theme='dark'] {
-  /* Background colors - near-black canvas */
-  --bg-primary: #050505;
-  --bg-secondary: #0b0b0b;
-  --bg-tertiary: #111111;
+  /* Background colors - deep blue canvas */
+  --bg-primary: #0d1729;
+  --bg-secondary: #111f35;
+  --bg-tertiary: #182943;
   
   /* Text colors - high contrast */
   --text-primary: #ffffff;
@@ -65,12 +65,12 @@
   --shadow-color: rgba(0, 0, 0, 0.2);
   --shadow-hover: rgba(0, 0, 0, 0.3);
   
-  /* Card backgrounds - subtle dark cards */
-  --card-bg: rgba(255, 255, 255, 0.03);
-  --card-hover: rgba(255, 255, 255, 0.06);
+  /* Card backgrounds - subtle blue cards */
+  --card-bg: #14233b;
+  --card-hover: #1b2e4b;
   
   /* Toggle button */
-  --toggle-bg: rgba(255, 255, 255, 0.03);
+  --toggle-bg: #14233b;
   
   /* Code/pre backgrounds */
   --code-bg: rgba(255, 255, 255, 0.03);

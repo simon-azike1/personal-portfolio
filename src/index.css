@@ -22,7 +22,7 @@
   }
   
 .btn-secondary {
-     @apply bg-transparent border border-accent-primary opacity-20 hover:bg-accent-primary hover:opacity-10 hover:text-white;
+  @apply border border-accent-primary bg-transparent hover:bg-accent-primary hover:text-white;
      color: var(--accent-primary);
    }
   

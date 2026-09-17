@@ -1,5 +1,4 @@
-import React, { useRef, useState } from 'react';
-import emailjs from "@emailjs/browser";
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Mail,
@@ -14,17 +13,10 @@ import {
   Youtube
 } from 'lucide-react';
 import { useI18n } from '../../context/I18nContext';
-
-// EmailJS Configuration (moved to constants for better maintainability)
-const EMAILJS_CONFIG = {
-  serviceId: 'service_4bksq8k',
-  templateId: 'template_rg09fy2',
-  publicKey: 'xL6_CntdprOU1DvCJ'
-};
+import { contactAPI } from '../../services/api';
 
 const Contact = () => {
   const { t } = useI18n();
-  const form = useRef();
   const [formStatus, setFormStatus] = useState('idle'); // idle, loading, success, error
   const [errorMessage, setErrorMessage] = useState('');
   const [formData, setFormData] = useState({
@@ -141,21 +133,10 @@ const Contact = () => {
     setFormStatus('loading');
 
     try {
-      const result = await emailjs.sendForm(
-        EMAILJS_CONFIG.serviceId,
-        EMAILJS_CONFIG.templateId,
-        form.current,
-        EMAILJS_CONFIG.publicKey
-      );
-
-      console.log('Email sent successfully:', result.text);
+      await contactAPI.send(formData);
       
       setFormStatus('success');
       setFormData({ user_name: '', user_email: '', message: '' });
-      form.current.reset();
-
-      // Auto-hide success message after 5 seconds
-      setTimeout(() => setFormStatus('idle'), 5000);
       
     } catch (error) {
       console.error('Email sending failed:', error);
@@ -163,15 +144,7 @@ const Contact = () => {
       setFormStatus('error');
       
       // Set user-friendly error message
-      if (error.text) {
-        setErrorMessage(`${t('forms.sendFailed')} ${error.text}`);
-      } else if (error.status === 400) {
-        setErrorMessage(t('forms.sendInvalid'));
-      } else if (error.status === 401) {
-        setErrorMessage(t('forms.sendAuth'));
-      } else {
-        setErrorMessage(t('forms.sendNetwork'));
-      }
+      setErrorMessage(error.message || t('forms.sendNetwork'));
 
       // Auto-hide error message after 7 seconds
       setTimeout(() => {
@@ -200,7 +173,15 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-24 bg-bg-secondary" aria-label={t('contact.sectionLabel')}>
+    <motion.section
+      id="contact"
+      className="py-24 bg-bg-secondary"
+      aria-label={t('contact.sectionLabel')}
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.7, ease: 'easeOut' }}
+      viewport={{ once: true, amount: 0.12 }}
+    >
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         {/* Header */}
         <motion.div
@@ -321,7 +302,6 @@ const Contact = () => {
             </div>
 
             <form
-              ref={form}
               onSubmit={handleSubmit}
               className="space-y-6"
               noValidate
@@ -453,25 +433,48 @@ const Contact = () => {
             <AnimatePresence>
               {formStatus === 'success' && (
                 <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  className="mt-6 p-4 bg-bg-secondary/50 border border-border rounded-lg flex items-start gap-3"
-                  role="alert"
-                  aria-live="polite"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="fixed inset-0 z-[60] flex items-center justify-center bg-slate-950/70 p-6 backdrop-blur-sm"
+                  role="dialog"
+                  aria-modal="true"
+                  aria-labelledby="contact-success-title"
+                  onClick={handleDismissMessage}
                 >
-                  <CheckCircle size={20} className="text-accent-primary flex-shrink-0 mt-0.5" aria-hidden="true" />
-                  <div className="flex-1">
-                    <h4 className="font-bold text-text-primary">{t('contact.successTitle')}</h4>
-                    <p className="text-sm text-text-secondary">{t('contact.successBody')}</p>
-                  </div>
-                  <button
-                    onClick={handleDismissMessage}
-                    className="text-accent-primary hover:text-accent-hover transition-colors"
-                    aria-label="Dismiss success message"
+                  <motion.div
+                    initial={{ opacity: 0, y: 24, scale: 0.94 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 12, scale: 0.96 }}
+                    transition={{ duration: 0.3, ease: 'easeOut' }}
+                    className="relative w-full max-w-md overflow-hidden rounded-3xl border border-accent-primary/30 bg-bg-primary p-8 text-center shadow-2xl sm:p-10"
+                    onClick={(event) => event.stopPropagation()}
                   >
-                    <XCircle size={18} />
-                  </button>
+                    <div className="absolute inset-x-0 top-0 h-1.5 bg-accent-primary" />
+                    <button
+                      onClick={handleDismissMessage}
+                      className="absolute right-4 top-4 rounded-full p-2 text-text-tertiary transition-colors hover:bg-bg-secondary hover:text-text-primary"
+                      aria-label="Dismiss success message"
+                    >
+                      <XCircle size={22} />
+                    </button>
+                    <div className="mx-auto mb-6 flex h-24 w-24 items-center justify-center rounded-full border-4 border-accent-primary/30 bg-bg-secondary p-1.5 text-accent-primary shadow-[0_0_0_10px_rgba(92,191,13,0.06)]">
+                      <img src="/Images/logo.png" alt="SimzikTech logo" className="h-full w-full rounded-full object-cover" />
+                    </div>
+                    <p className="mb-2 text-xs font-bold uppercase tracking-[0.2em] text-accent-primary">SimzikTech</p>
+                    <h4 id="contact-success-title" className="text-3xl font-black tracking-tight text-text-primary">
+                      {t('contact.successTitle')}
+                    </h4>
+                    <p className="mx-auto mt-4 max-w-sm text-base leading-7 text-text-secondary">
+                      {t('contact.successBody')}
+                    </p>
+                    <button
+                      onClick={handleDismissMessage}
+                      className="mt-8 inline-flex items-center justify-center rounded-full bg-accent-primary px-7 py-3 font-semibold text-white transition-colors hover:bg-accent-hover"
+                    >
+                      {t('contact.submit')}
+                    </button>
+                  </motion.div>
                 </motion.div>
               )}
 
@@ -506,7 +509,7 @@ const Contact = () => {
 
         
       </div>
-    </section>
+    </motion.section>
   );
 };
 

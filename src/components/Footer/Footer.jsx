@@ -3,6 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
   ArrowUp,
+  ArrowUpRight,
   Github,
   Linkedin,
   Mail,
@@ -17,11 +18,6 @@ const Footer = () => {
   const [currentYear] = useState(new Date().getFullYear())
   const { t } = useI18n()
 
-  // Hide footer on admin pages
-  if (location.pathname.startsWith('/admin')) {
-    return null
-  }
-
   // Show scroll to top button when user scrolls down
   useEffect(() => {
     const handleScroll = () => {
@@ -31,6 +27,11 @@ const Footer = () => {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  // Hide footer on admin pages
+  if (location.pathname.startsWith('/admin')) {
+    return null
+  }
 
   // Smooth scroll to top
   const scrollToTop = () => {
@@ -78,14 +79,14 @@ const Footer = () => {
   return (
     <>
       {/* Enhanced Footer */}
-      <footer className="bg-bg-secondary/50 backdrop-blur-sm border-t border-border">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="space-y-10">
+      <footer className="border-t border-border bg-bg-secondary/50 backdrop-blur-sm">
+        <div className="mx-auto max-w-7xl px-6 pb-8 pt-16 sm:px-8 lg:px-12">
+          <div className="space-y-12">
             {/* Main Footer Content */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div className="grid grid-cols-1 gap-12 md:grid-cols-[1.4fr_0.8fr_0.8fr] lg:gap-20">
               {/* Brand Section */}
               <motion.div
-                className="space-y-6"
+                className="space-y-5"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
@@ -106,16 +107,16 @@ const Footer = () => {
                 </p>
                 <a
                   href="#projects"
-                  className="inline-flex items-center gap-3 mt-4 bg-accent-primary/10 rounded-full px-4 py-2 text-accent-primary font-medium hover:bg-accent-primary/20 transition-colors"
+                  className="mt-3 inline-flex items-center gap-2 rounded-full border border-accent-primary/30 bg-accent-primary/10 px-4 py-2.5 text-sm font-semibold text-accent-primary transition-colors hover:bg-accent-primary/20"
                 >
                   {t('footer.cta')}
-                  <span className="ml-2">→</span>
+                  <ArrowUpRight size={16} aria-hidden="true" />
                 </a>
               </motion.div>
 
               {/* Quick Links */}
               <motion.div
-                className="space-y-6"
+                className="space-y-5"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
@@ -127,7 +128,7 @@ const Footer = () => {
                     <motion.a
                       key={link.name}
                       href={link.href}
-                      className="text-text-tertiary hover:text-accent-primary transition-colors inline-block"
+                      className="inline-block text-sm text-text-secondary transition-colors hover:text-accent-primary"
                       whileHover={{ x: 4 }}
                       initial={{ opacity: 0, x: -20 }}
                       whileInView={{ opacity: 1, x: 0 }}
@@ -142,19 +143,19 @@ const Footer = () => {
 
               {/* Social Links */}
               <motion.div
-                className="space-y-6"
+                className="space-y-5"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
                 viewport={{ once: true }}
               >
                 <h3 className="font-bold text-lg text-text-primary">{t('footer.connect')}</h3>
-                <div className="flex gap-4">
+                <div className="flex gap-3">
                   {socialLinks.map((social, index) => (
                     <motion.a
                       key={social.name}
                       href={social.url}
-                      className="w-10 h-10 bg-bg-secondary/50 hover:bg-accent-primary/20 hover:text-white rounded-lg flex items-center justify-center transition-colors"
+                      className="flex h-11 w-11 items-center justify-center rounded-xl border border-border bg-bg-primary text-text-secondary transition-colors hover:border-accent-primary/40 hover:bg-accent-primary/15 hover:text-accent-primary"
                       target="_blank"
                       rel="noopener noreferrer"
                       whileHover={{ y: -4, scale: 1.1 }}
@@ -174,33 +175,33 @@ const Footer = () => {
 
             {/* Footer Bottom */}
             <motion.div
-              className="pt-8 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4"
+              className="flex flex-col items-start justify-between gap-6 border-t border-border pt-8 sm:flex-row sm:items-center"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.3 }}
               viewport={{ once: true }}
             >
-              <div className="flex items-center gap-4">
-                <p className="text-text-tertiary text-sm text-center sm:text-left">
-                  Â© {currentYear} SimzikTech. {t('footer.builtWithPassion')}
+              <div className="flex items-center gap-3">
+                <p className="text-sm text-text-tertiary">
+                  © {currentYear} SimzikTech. {t('footer.builtWithPassion')}
                 </p>
                 <button
                   onClick={() => navigate('/admin/login')}
-                  className="text-text-tertiary hover:text-text-secondary text-xs transition-colors"
+                  className="text-text-tertiary transition-colors hover:text-accent-primary"
                   aria-label="Admin"
                 >
-                  â€¢
+                  •
                 </button>
               </div>
 
-              <div className="flex items-center gap-2 text-sm text-text-tertiary">
+              <div className="flex flex-wrap items-center gap-2 text-sm text-text-tertiary">
                 <Code size={14} />
                 <span className="text-text-primary">{t('footer.builtWith')}</span>
-                <div className="flex gap-2">
+                <div className="flex flex-wrap gap-2">
                   {techStack.map((tech, index) => (
                     <motion.span
                       key={tech.name}
-                      className="px-2 py-1 bg-bg-secondary/50 rounded text-xs hover:bg-accent-primary/20 hover:text-white transition-colors cursor-default"
+                      className="cursor-default rounded border border-border bg-bg-primary px-2.5 py-1 text-xs text-text-secondary transition-colors hover:border-accent-primary/40 hover:bg-accent-primary/15 hover:text-accent-primary"
                       whileHover={{ y: -2 }}
                       initial={{ opacity: 0, y: 10 }}
                       whileInView={{ opacity: 1, y: 0 }}
@@ -221,7 +222,7 @@ const Footer = () => {
       <AnimatePresence>
         {showScrollTop && (
           <motion.button
-            className="fixed bottom-8 right-8 w-12 h-12 bg-accent-primary text-white rounded-full flex items-center justify-center shadow-lg hover:bg-accent-hover transition-colors z-50"
+            className="fixed bottom-6 right-6 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-accent-primary text-white shadow-lg transition-colors hover:bg-accent-hover sm:bottom-8 sm:right-8"
             onClick={scrollToTop}
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}

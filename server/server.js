@@ -25,6 +25,7 @@ import authRoutes from './routes/auth.js';
 import projectRoutes from './routes/projects.js';
 import skillRoutes from './routes/skills.js';
 import testimonialRoutes from './routes/testimonials.js';
+import contactRoutes from './routes/contact.js';
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -46,7 +47,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 // CORS Middleware - explicit allow-list, no wildcard vercel.app match
-const allowedOrigins = (process.env.ALLOWED_ORIGINS || 'https://personal-portfolio-ten-lime-93.vercel.app/,http://localhost:5173,http://localhost:5174')
+const allowedOrigins = (process.env.ALLOWED_ORIGINS || 'https://personal-portfolio-ten-lime-93.vercel.app,http://localhost:5173,http://localhost:5174')
   .split(',')
   .map((origin) => origin.trim());
 
@@ -80,6 +81,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/projects', projectRoutes);
 app.use('/api/skills', skillRoutes);
 app.use('/api/testimonials', testimonialRoutes);
+app.use('/api/contact', contactRoutes);
 
 // Health check route
 app.get('/api/health', (req, res) => {

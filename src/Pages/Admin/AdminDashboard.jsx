@@ -42,10 +42,9 @@ const AdminDashboard = ({ onLogout }) => {
 
   return (
     <div className="min-h-screen bg-theme-bg-primary text-theme-text-primary">
-      {/* Top Navigation */}
-      <nav className="sticky top-0 z-50 bg-theme-card border-b border-theme">
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
+      <nav className="sticky top-0 z-50 border-b border-theme bg-theme-card/90 backdrop-blur-xl">
+        <div className="mx-auto max-w-7xl px-6 py-4">
+          <div className="flex items-center justify-between gap-4">
             <div>
               <a href="/" className="flex items-center gap-3" aria-label="SimzikTech Home">
                 <span className="relative flex h-11 w-11 items-center justify-center rounded-full bg-gradient-to-br from-theme-accent-primary to-theme-accent-secondary p-[2px] shadow-md transition-transform duration-300 hover:scale-105">
@@ -59,21 +58,17 @@ const AdminDashboard = ({ onLogout }) => {
               </a>
             </div>
             <div className="flex items-center gap-3">
-              <LanguageSwitcher
-                value={language}
-                onChange={setLanguage}
-                label={t('nav.language')}
-              />
+              <LanguageSwitcher value={language} onChange={setLanguage} label={t('nav.language')} />
               <button
                 onClick={toggleTheme}
-                className="w-10 h-10 rounded-lg bg-theme-bg-secondary border border-theme flex items-center justify-center text-theme-text-primary"
+                className="flex h-10 w-10 items-center justify-center rounded-lg border border-theme bg-theme-bg-secondary text-theme-text-primary transition hover:border-theme-accent-primary"
                 aria-label={theme === 'light' ? t('nav.darkMode') : t('nav.lightMode')}
               >
                 {theme === 'light' ? <Moon size={18} /> : <Sun size={18} />}
               </button>
               <button
                 onClick={handleLogout}
-                className="flex items-center gap-2 px-4 py-2 text-theme-text-secondary hover:bg-theme-bg-secondary rounded-lg transition-colors"
+                className="flex items-center gap-2 rounded-lg px-4 py-2 text-theme-text-secondary transition hover:bg-theme-bg-secondary"
               >
                 <LogOut size={20} />
                 {t('admin.logout')}
@@ -83,32 +78,35 @@ const AdminDashboard = ({ onLogout }) => {
         </div>
       </nav>
 
-      <div className="max-w-7xl mx-auto px-6 py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
-          {/* Sidebar */}
+      <div className="mx-auto max-w-7xl px-6 py-8">
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-4">
           <div className="lg:col-span-1">
-            <div className="bg-theme-card rounded-xl shadow-sm p-4 space-y-2 border border-theme">
-              {menuItems.map((item) => {
-                const Icon = item.icon;
-                return (
-                  <button
-                    key={item.id}
-                    onClick={() => setActiveTab(item.id)}
-                    className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${
-                      activeTab === item.id
-                        ? 'bg-theme-accent-primary text-white'
-                        : 'text-theme-text-secondary hover:bg-theme-bg-secondary'
-                    }`}
-                  >
-                    <Icon size={20} />
-                    <span className="font-medium">{item.name}</span>
-                  </button>
-                );
-              })}
+            <div className="rounded-2xl border border-theme bg-theme-card p-3 shadow-sm">
+              <div className="mb-3 px-3 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-theme-text-tertiary">
+                Workspace
+              </div>
+              <div className="space-y-2">
+                {menuItems.map((item) => {
+                  const Icon = item.icon;
+                  return (
+                    <button
+                      key={item.id}
+                      onClick={() => setActiveTab(item.id)}
+                      className={`flex w-full items-center gap-3 rounded-xl px-4 py-3 text-left transition-all ${
+                        activeTab === item.id
+                          ? 'bg-theme-accent-primary text-white shadow-md shadow-emerald-500/20'
+                          : 'text-theme-text-secondary hover:bg-theme-bg-secondary'
+                      }`}
+                    >
+                      <Icon size={18} />
+                      <span className="font-medium">{item.name}</span>
+                    </button>
+                  );
+                })}
+              </div>
             </div>
           </div>
 
-          {/* Main Content */}
           <div className="lg:col-span-3">
             <motion.div
               key={activeTab}
@@ -142,79 +140,76 @@ const OverviewSection = ({ onQuickAction }) => {
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-2xl font-bold text-theme-text-primary mb-2">{t('admin.overviewTitle')}</h2>
+        <h2 className="mb-2 text-3xl font-bold text-theme-text-primary">{t('admin.overviewTitle')}</h2>
         <p className="text-theme-text-secondary">{t('admin.overviewSubtitle')}</p>
       </div>
 
-      {/* Stats Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
         {stats.map((stat, index) => (
           <motion.div
             key={stat.label}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: index * 0.1 }}
-            className="bg-theme-card rounded-xl shadow-sm p-6 border border-theme"
+            transition={{ delay: index * 0.08 }}
+            className="rounded-2xl border border-theme bg-theme-card p-5 shadow-sm"
           >
-            <div className={`w-12 h-12 ${stat.color} rounded-lg flex items-center justify-center mb-4`}>
-              <span className="text-white text-2xl font-bold">{stat.value.charAt(0)}</span>
+            <div className={`mb-4 flex h-12 w-12 items-center justify-center rounded-xl ${stat.color} shadow-sm`}>
+              <span className="text-xl font-bold text-white">{stat.value.charAt(0)}</span>
             </div>
-            <p className="text-theme-text-secondary text-sm mb-1">{t(stat.label)}</p>
+            <p className="mb-1 text-sm text-theme-text-secondary">{t(stat.label)}</p>
             <p className="text-3xl font-bold text-theme-text-primary">{stat.value}</p>
           </motion.div>
         ))}
       </div>
 
-      {/* Quick Actions */}
-      <div className="bg-theme-card rounded-xl shadow-sm p-6 border border-theme">
-        <h3 className="text-xl font-bold text-theme-text-primary mb-4">{t('admin.quickActions')}</h3>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="rounded-2xl border border-theme bg-theme-card p-6 shadow-sm">
+        <h3 className="mb-4 text-xl font-bold text-theme-text-primary">{t('admin.quickActions')}</h3>
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
           <button
             onClick={() => onQuickAction('projects')}
-            className="flex items-center gap-3 p-4 border-2 border-theme rounded-lg hover:border-theme-accent-primary hover:bg-theme-bg-secondary transition-colors"
+            className="flex items-center gap-3 rounded-xl border border-theme bg-theme-bg-secondary p-4 text-left transition hover:border-theme-accent-primary hover:bg-theme-bg-primary"
           >
-            <Plus size={20} className="text-theme-accent-primary" />
+            <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-theme-accent-primary/10 text-theme-accent-primary"><Plus size={18} /></span>
             <span className="font-medium text-theme-text-secondary">{t('admin.addProject')}</span>
           </button>
           <button
             onClick={() => onQuickAction('skills')}
-            className="flex items-center gap-3 p-4 border-2 border-theme rounded-lg hover:border-theme-accent-primary hover:bg-theme-bg-secondary transition-colors"
+            className="flex items-center gap-3 rounded-xl border border-theme bg-theme-bg-secondary p-4 text-left transition hover:border-theme-accent-primary hover:bg-theme-bg-primary"
           >
-            <Plus size={20} className="text-theme-accent-primary" />
+            <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-theme-accent-primary/10 text-theme-accent-primary"><Plus size={18} /></span>
             <span className="font-medium text-theme-text-secondary">{t('admin.addSkill')}</span>
           </button>
           <button
             onClick={() => onQuickAction('testimonials')}
-            className="flex items-center gap-3 p-4 border-2 border-theme rounded-lg hover:border-theme-accent-primary hover:bg-theme-bg-secondary transition-colors"
+            className="flex items-center gap-3 rounded-xl border border-theme bg-theme-bg-secondary p-4 text-left transition hover:border-theme-accent-primary hover:bg-theme-bg-primary"
           >
-            <Plus size={20} className="text-theme-accent-primary" />
+            <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-theme-accent-primary/10 text-theme-accent-primary"><Plus size={18} /></span>
             <span className="font-medium text-theme-text-secondary">{t('admin.addTestimonial')}</span>
           </button>
         </div>
       </div>
 
-      {/* Recent Activity */}
-      <div className="bg-theme-card rounded-xl shadow-sm p-6 border border-theme">
-        <h3 className="text-xl font-bold text-theme-text-primary mb-4">{t('admin.recentActivity')}</h3>
+      <div className="rounded-2xl border border-theme bg-theme-card p-6 shadow-sm">
+        <h3 className="mb-4 text-xl font-bold text-theme-text-primary">{t('admin.recentActivity')}</h3>
         <div className="space-y-4">
-          <div className="flex items-start gap-4 pb-4 border-b border-theme">
-            <div className="w-2 h-2 bg-primary rounded-full mt-2"></div>
+          <div className="flex items-start gap-4 border-b border-theme pb-4">
+            <div className="mt-2 h-2.5 w-2.5 rounded-full bg-theme-accent-primary" />
             <div className="flex-1">
-              <p className="text-theme-text-secondary font-medium">{t('admin.activityProject')}</p>
+              <p className="font-medium text-theme-text-secondary">{t('admin.activityProject')}</p>
               <p className="text-sm text-theme-text-tertiary">{t('admin.timeTwoHours')}</p>
             </div>
           </div>
-          <div className="flex items-start gap-4 pb-4 border-b border-theme">
-            <div className="w-2 h-2 bg-primary-light rounded-full mt-2"></div>
+          <div className="flex items-start gap-4 border-b border-theme pb-4">
+            <div className="mt-2 h-2.5 w-2.5 rounded-full bg-emerald-500" />
             <div className="flex-1">
-              <p className="text-theme-text-secondary font-medium">{t('admin.activitySkill')}</p>
+              <p className="font-medium text-theme-text-secondary">{t('admin.activitySkill')}</p>
               <p className="text-sm text-theme-text-tertiary">{t('admin.timeOneDay')}</p>
             </div>
           </div>
           <div className="flex items-start gap-4">
-            <div className="w-2 h-2 bg-primary-dark rounded-full mt-2"></div>
+            <div className="mt-2 h-2.5 w-2.5 rounded-full bg-sky-500" />
             <div className="flex-1">
-              <p className="text-theme-text-secondary font-medium">{t('admin.activityTestimonial')}</p>
+              <p className="font-medium text-theme-text-secondary">{t('admin.activityTestimonial')}</p>
               <p className="text-sm text-theme-text-tertiary">{t('admin.timeThreeDays')}</p>
             </div>
           </div>

@@ -1,13 +1,27 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, ChevronDown, Download } from 'lucide-react';
+import {
+  Mail,
+  Phone,
+  MapPin,
+  MessageCircle,
+  ChevronDown,
+  Code2,
+  Database,
+  Server,
+  Palette,
+  Rocket,
+  Layers3,
+  Sparkles,
+} from 'lucide-react';
 import profileAbout from '../../assets/Images/profile-about.jpg';
-import profileMain2 from '../../assets/Images/profile-main2.png';
+import heroPhoto from '../../assets/Images/simon_hero .jpg';
 import { useI18n } from '../../context/I18nContext';
 
 const Hero = () => {
   const { t } = useI18n();
   const whatsappMessage = encodeURIComponent(t('contact.whatsappMessage'));
+
   const scrollToSection = (id) => {
     const el = document.getElementById(id);
     if (el) {
@@ -15,133 +29,149 @@ const Hero = () => {
     }
   };
 
+  const techStack = [
+    { icon: Code2, label: 'React', className: 'top-8 left-2 md:left-8' },
+    { icon: Database, label: 'MongoDB', className: 'top-16 right-4 md:right-10' },
+    { icon: Server, label: 'API', className: 'bottom-12 left-0 md:left-6' },
+    { icon: Palette, label: 'UI/UX', className: 'bottom-20 right-0 md:right-8' },
+    { icon: Rocket, label: 'Deploy', className: 'top-1/2 -left-4 md:-left-8' },
+    { icon: Layers3, label: 'Next', className: 'top-1/2 -right-3 md:-right-8' },
+  ];
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.1
-      }
-    }
+        staggerChildren: 0.15,
+        delayChildren: 0.08,
+      },
+    },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0, y: 28 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut"
-      }
-    }
+      transition: { duration: 0.6, ease: 'easeOut' },
+    },
   };
 
   const imageVariants = {
-    hidden: { opacity: 0, scale: 0.8, rotate: -10 },
+    hidden: { opacity: 0, scale: 0.9, rotate: -6 },
     visible: {
       opacity: 1,
       scale: 1,
       rotate: 0,
-      transition: {
-        duration: 0.8,
-        ease: "easeOut"
-      }
-    }
+      transition: { duration: 0.8, ease: 'easeOut' },
+    },
   };
 
   return (
     <>
-      {/* Hero Section */}
-      <section id="home" className="relative min-h-screen bg-bg-primary overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-bg-secondary via-bg-primary to-bg-secondary"></div>
-        <div className="absolute -top-24 -right-24 h-64 w-64 rounded-full bg-accent-primary/10 blur-3xl"></div>
-        <div className="absolute -bottom-24 -left-24 h-64 w-64 rounded-full bg-accent-secondary/20 blur-3xl"></div>
+      <section id="home" className="relative min-h-screen overflow-hidden bg-bg-primary">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(99,102,241,0.24),_transparent_30%),radial-gradient(circle_at_bottom_right,_rgba(16,185,129,0.18),_transparent_35%),linear-gradient(135deg,#0b1120_0%,#111827_30%,#0f172a_100%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(120deg,rgba(15,23,42,0.88),rgba(15,23,42,0.52),rgba(15,23,42,0.9))]" />
+        <div className="absolute -top-20 -right-20 h-72 w-72 rounded-full bg-accent-primary/10 blur-3xl" />
+        <div className="absolute -bottom-24 -left-20 h-72 w-72 rounded-full bg-violet-500/10 blur-3xl" />
 
-        <div className="relative max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-24 sm:pt-28 pb-16 sm:pb-20">
+        <div className="relative mx-auto max-w-7xl px-6 pb-16 pt-24 sm:px-8 lg:px-12 lg:pb-20 lg:pt-28">
           <motion.div
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center min-h-[calc(100vh-10rem)]"
+            className="grid min-h-[calc(100vh-10rem)] items-center gap-10 lg:grid-cols-[1.05fr_0.95fr]"
           >
-            {/* Text Content */}
             <div className="space-y-6">
-              {/* Eyebrow badge with status dot */}
-              <motion.div variants={itemVariants} className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-accent-primary/10 text-accent-primary text-xs font-medium border border-accent-primary/20">
-                <span className="h-2 w-2 rounded-full bg-accent-primary"></span>
+              <motion.div
+                variants={itemVariants}
+                className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-medium text-accent-primary backdrop-blur-sm"
+              >
+                <span className="h-2.5 w-2.5 rounded-full bg-accent-primary shadow-[0_0_14px_rgba(99,102,241,0.8)]" />
                 {t('nav.available')}
               </motion.div>
 
-              {/* Large headline with accent-highlighted words */}
-              <motion.h1 variants={itemVariants} className="text-5xl sm:text-6xl lg:text-7xl font-bold text-text-primary leading-tight tracking-tighter">
-                We Build{' '}
-                <span className="text-accent-primary">
-                  Modern Digital Experiences
-                </span>
-                {' '}
-                <span className="text-accent-primary">
-                  For Brands Ready To Stand Out
-                </span>
+              <motion.h1
+                variants={itemVariants}
+                className="max-w-2xl text-4xl font-black leading-[1.02] tracking-[-0.05em] text-white sm:text-5xl lg:text-6xl"
+              >
+                I build{' '}
+                <span className="text-accent-primary">premium digital products</span>{' '}
+                that feel sharp, fast, and easy to trust.
               </motion.h1>
 
-              {/* Short supporting paragraph */}
-              <motion.p variants={itemVariants} className="text-lg text-text-secondary leading-relaxed max-w-2xl">
-                We combine strategy, design, and development to create responsive, high-performance websites that help businesses communicate clearly, build trust, and convert attention into action.
+              <motion.p
+                variants={itemVariants}
+                className="max-w-xl text-base leading-relaxed text-slate-200 sm:text-lg"
+              >
+                {t('hero.intro')}
               </motion.p>
 
-              {/* CTA group */}
-              <motion.div variants={itemVariants} className="flex flex-wrap gap-4 mt-6">
-                {/* Primary CTA */}
+              <motion.div variants={itemVariants} className="flex flex-wrap gap-4 pt-2">
                 <button
                   onClick={() => scrollToSection('projects')}
-                  className="btn btn-primary hover:-translate-y-0.5 transition-transform duration-300"
+                  className="btn btn-primary"
                 >
-                  View Our Work
-                  <span className="ml-2">→</span>
+                  {t('hero.viewWork')}
+                  <span aria-hidden="true">→</span>
                 </button>
-
-                {/* Secondary CTA */}
                 <button
                   onClick={() => scrollToSection('contact')}
-                  className="btn btn-secondary hover:-translate-y-0.5 transition-transform duration-300"
+                  className="btn btn-secondary"
                 >
-                  Let’s Talk
+                  {t('hero.contact')}
                 </button>
+                <a
+                  href={`https://wa.me/212751780853?text=${whatsappMessage}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-secondary border-accent-primary/40 text-accent-primary hover:bg-accent-primary/10"
+                >
+                  <MessageCircle size={18} />
+                  Let's talk
+                </a>
               </motion.div>
             </div>
 
-            {/* Image Content */}
-            <motion.div
-              variants={imageVariants}
-              className="relative flex justify-center lg:justify-end"
-            >
-              <div className="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-[26rem] lg:h-[26rem]">
-<img
-                   src={profileMain2}
-                   alt="Profile image"
-                   className="w-full h-full object-cover rounded-3xl shadow-2xl"
-                 />
-                <div className="absolute inset-0 rounded-3xl bg-gradient-to-tr from-accent-primary to-transparent opacity-20"></div>
+            <motion.div variants={imageVariants} className="relative flex justify-center lg:justify-end">
+              <div className="relative w-full max-w-[500px]">
+                <div className="absolute -inset-6 rounded-[2rem] bg-gradient-to-br from-accent-primary/20 via-transparent to-violet-500/20 blur-2xl" />
+                <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-slate-900/40 p-3 shadow-[0_30px_80px_rgba(15,23,42,0.6)] backdrop-blur-sm">
+                  <img
+                    src={heroPhoto}
+                    alt="Simon Azike portrait"
+                    className="h-[520px] w-full rounded-[1.5rem] object-cover object-center"
+                  />
+                </div>
 
-
+                {techStack.map(({ icon: Icon, label, className }, index) => (
+                  <motion.div
+                    key={label}
+                    initial={{ opacity: 0, y: 18 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.35 + index * 0.12, duration: 0.45 }}
+                    className={`absolute ${className} flex items-center gap-2 rounded-full border border-white/10 bg-slate-950/70 px-3 py-2 text-xs font-medium text-slate-200 shadow-lg backdrop-blur-md`}
+                  >
+                    <Icon size={14} className="text-accent-primary" />
+                    {label}
+                  </motion.div>
+                ))}
               </div>
             </motion.div>
           </motion.div>
 
-          {/* Scroll Indicator */}
           <div className="mt-10 flex justify-center">
             <motion.button
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1 }}
-              className="flex flex-col items-center gap-2 rounded-full bg-bg-secondary/80 px-4 py-2 text-text-primary shadow-md backdrop-blur-sm hover:text-accent-primary transition-colors cursor-pointer"
-              onClick={() => scrollToSection("about")}
+              className="flex cursor-pointer flex-col items-center gap-2 rounded-full bg-white/5 px-4 py-2 text-slate-200 shadow-md backdrop-blur-sm transition-colors hover:text-accent-primary"
+              onClick={() => scrollToSection('about')}
             >
               <motion.div
                 animate={{ y: [0, 6, 0] }}
-                transition={{ repeat: Infinity, duration: 1.6, ease: "easeInOut" }}
+                transition={{ repeat: Infinity, duration: 1.6, ease: 'easeInOut' }}
               >
                 <ChevronDown size={20} />
               </motion.div>
@@ -151,43 +181,38 @@ const Hero = () => {
         </div>
       </section>
 
-      {/* About Section */}
-      <section id="about" className="py-24 bg-bg-secondary">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+      <section id="about" className="bg-bg-secondary py-20 sm:py-24">
+        <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.7 }}
             viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-            <h2 className="text-4xl sm:text-5xl font-bold text-text-primary">
+            className="mb-12 text-center"
+          >
+            <h2 className="text-4xl font-bold tracking-tight text-text-primary sm:text-5xl">
               {t('about.title')}
             </h2>
-        </motion.div>
+          </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Profile Card */}
+          <div className="grid items-center gap-8 lg:grid-cols-[0.9fr_1.1fr]">
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
+              initial={{ opacity: 0, x: -28 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className="bg-card rounded-2xl shadow-lg p-8 border border-border"
+              className="rounded-[2rem] border border-border bg-card p-8 shadow-lg"
             >
-              <div className="relative w-48 h-48 mx-auto mb-6">
-                <img src={profileAbout} alt="Simon Azike - Professional" className="w-full h-full object-cover rounded-full" />
-                <div className="absolute bottom-2 right-2 w-6 h-6 bg-card rounded-full flex items-center justify-center">
-                  <div className="w-4 h-4 bg-accent-primary rounded-full"></div>
-                </div>
+              <div className="relative mx-auto mb-6 h-52 w-52 overflow-hidden rounded-full border-4 border-accent-primary/20 shadow-xl">
+                <img src={profileAbout} alt="Simon Azike - Professional" className="h-full w-full object-cover" />
               </div>
 
-              <div className="text-center space-y-4">
+              <div className="space-y-4 text-center">
                 <h3 className="text-2xl font-bold text-text-primary">{t('about.name')}</h3>
                 <p className="text-lg text-text-secondary">{t('about.role')}</p>
 
-                <div className="space-y-3 pt-4">
-                  <div className="flex items-center gap-3 text-text-secondary">
+                <div className="space-y-3 pt-3 text-left text-text-secondary">
+                  <div className="flex items-center gap-3">
                     <Mail size={16} className="text-accent-primary" />
                     <span>azikeshinye@gmail.com</span>
                   </div>
@@ -195,12 +220,12 @@ const Hero = () => {
                     href={`https://wa.me/212751780853?text=${whatsappMessage}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-3 text-text-secondary hover:text-accent-primary transition-colors"
+                    className="flex items-center gap-3 text-text-secondary transition-colors hover:text-accent-primary"
                   >
                     <Phone size={16} className="text-accent-primary" />
                     <span>+212 751-780853</span>
                   </a>
-                  <div className="flex items-center gap-3 text-text-secondary">
+                  <div className="flex items-center gap-3">
                     <MapPin size={16} className="text-accent-primary" />
                     <span>Sale Rabat, Morocco</span>
                   </div>
@@ -208,66 +233,44 @@ const Hero = () => {
               </div>
             </motion.div>
 
-            {/* Journey Content */}
             <motion.div
-              initial={{ opacity: 0, x: 30 }}
+              initial={{ opacity: 0, x: 28 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              transition={{ duration: 0.8, delay: 0.1 }}
               viewport={{ once: true }}
-              className="bg-card rounded-2xl shadow-lg p-8 border border-border"
+              className="rounded-[2rem] border border-border bg-card p-8 shadow-lg"
             >
               <div className="space-y-6">
                 <div>
-                  <h3 className="text-2xl font-bold text-text-primary mb-2">{t('about.journeyTitle')}</h3>
-                  <div className="w-20 h-1 bg-accent-primary"></div>
+                  <h3 className="mb-3 text-2xl font-bold text-text-primary">{t('about.journeyTitle')}</h3>
+                  <div className="h-1 w-20 rounded-full bg-accent-primary" />
                 </div>
 
-                <div className="space-y-4 text-text-secondary leading-relaxed">
-                  <p>
-                    {t('about.journeyText')}
-                  </p>
+                <div className="space-y-4 text-base leading-relaxed text-text-secondary">
+                  <p>{t('about.journeyText')}</p>
 
                   <details className="about-disclosure rounded-xl border border-border bg-bg-secondary/50 p-4">
-                    <summary className="cursor-pointer text-accent-primary font-medium">
+                    <summary className="cursor-pointer font-medium text-accent-primary">
                       {t('about.cardiffTitle')}
                     </summary>
-                    <div className="about-disclosure__content mt-3 text-sm text-text-secondary space-y-2">
-                      <p>
-                        {t('about.cardiffBody')}
-                      </p>
+                    <div className="about-disclosure__content mt-3 space-y-2 text-sm text-text-secondary">
+                      <p>{t('about.cardiffBody')}</p>
                       <a
                         href="https://www.cardiffmet.ac.uk/"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 text-accent-primary hover:text-accent-hover transition-colors"
+                        className="inline-flex items-center gap-2 text-accent-primary transition-colors hover:text-accent-hover"
                       >
                         {t('about.cardiffLink')}
                       </a>
                     </div>
                   </details>
 
-                  <div className="bg-bg-secondary/50 p-4 rounded-lg border-l-4 border-accent-primary">
-                    <p className="text-text-secondary">
-                      {t('about.journeyNote')}
-                    </p>
+                  <div className="rounded-xl border-l-4 border-accent-primary bg-bg-secondary/50 p-4">
+                    <p>{t('about.journeyNote')}</p>
                   </div>
                 </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4">
-                  <div className="text-center">
-                    <span className="text-2xl font-bold text-accent-primary block">2022</span>
-                    <span className="text-sm text-text-tertiary">{t('about.statsStart')}</span>
-                  </div>
-                  <div className="text-center">
-                    <span className="text-2xl font-bold text-accent-primary block">20+</span>
-                    <span className="text-sm text-text-tertiary">{t('about.statsSkills')}</span>
-</div>
-                  <div className="text-center">
-                    <span className="text-2xl font-bold text-accent-primary block">âˆž</span>
-                    <span className="text-sm text-text-tertiary">{t('about.statsPassion')}</span>
-</div>
-</div>
-               </div>
+              </div>
             </motion.div>
           </div>
         </div>
