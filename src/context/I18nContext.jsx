@@ -75,9 +75,9 @@ about: {
                     title: 'UI/UX Design',
                     explanation: 'Crafting intuitive user experiences through research and design.'
                 },
-                devops: {
-                    title: 'DevOps & Deployment',
-                    explanation: 'Streamlining development workflows and ensuring reliable deployments.'
+                ai: {
+                    title: 'AI Engineering & Automation',
+                    explanation: 'Turning business data into useful AI-powered outputs and automated workflows through APIs, processing, and practical product integration.'
                 }
             },
             noSkillsAvailable: 'No skills available in this category.'

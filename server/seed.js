@@ -146,11 +146,25 @@ const seedSkills = [
     experience: "2+ years"
   },
   {
-    name: "Git & GitHub",
+    name: "AI API Integration",
     category: "tools",
-    level: "Advanced",
-    percentage: 85,
-    experience: "3+ years"
+    level: "Intermediate",
+    percentage: 60,
+    experience: "1+ year"
+  },
+  {
+    name: "Prompt Engineering",
+    category: "tools",
+    level: "Intermediate",
+    percentage: 60,
+    experience: "1+ year"
+  },
+  {
+    name: "Retrieval-Augmented Generation (RAG)",
+    category: "tools",
+    level: "Beginner",
+    percentage: 45,
+    experience: "Learning"
   },
   {
     name: "MongoDB",

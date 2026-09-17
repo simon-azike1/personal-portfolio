@@ -11,6 +11,7 @@
     "start": "node server/server.js",
     "seed": "node server/seed.js",
     "seed:admin": "node server/seedAdmin.js",
+    "migrate:ai-skills": "node server/migrateAiSkills.js",
     "lint": "eslint .",
     "preview": "vite preview"
   },

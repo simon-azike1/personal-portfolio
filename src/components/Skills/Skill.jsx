@@ -57,11 +57,11 @@ const Skills = () => {
       skills: [] // We'll extract design-related skills or leave empty for now
     },
     {
-      id: 'devops',
-      title: t('skills.capabilities.devops.title'),
-      explanation: t('skills.capabilities.devops.explanation'),
-      icon: 'Server',
-      skills: groupedSkills.tools || [] // Treat tools as DevOps for now
+      id: 'ai',
+      title: t('skills.capabilities.ai.title'),
+      explanation: t('skills.capabilities.ai.explanation'),
+      icon: 'Sparkles',
+      skills: groupedSkills.tools || []
     }
   ];
 
