@@ -1,4 +1,6 @@
-const API_BASE_URL = `${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api`;
+const rawUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+const cleanUrl = rawUrl.replace(/\/$/, '').replace(/\/api$/, '');
+const API_BASE_URL = `${cleanUrl}/api`;
 // Generic API call handler
 const apiCall = async (
   endpoint,
