@@ -1,172 +1,218 @@
-# Simon Azike - Personal Portfolio Knowledge Base
+# Simon Azike - Business-Focused Technology Professional Knowledge Base
 
-## Personal Information
-- Name: Simon Azike
-- Role: Full-Stack Developer
-- GitHub: https://github.com/simon-azike1
-- Portfolio Website: (Deployed via Vercel, see README for details)
+## 1. WHO I AM
+Simon Azike is a business-focused technology professional who helps businesses solve problems, improve their digital presence, and turn ideas into practical digital solutions. With 3+ years of experience as a full-stack developer, I combine technical expertise with business acumen to deliver technology solutions that address real business needs.
 
-## Portfolio Overview
-This is a modern, responsive portfolio website built to showcase Simon Azike's professional work, skills, and client testimonials.
+## 2. CORE VALUE PROPOSITION
+I use technology to solve business problems and turn ideas into practical digital solutions. I don't just build websites—I help businesses understand their digital needs, identify the right solutions, and build working products that drive results.
 
-### Technologies Used
-- **Frontend:** React, Vite, Tailwind CSS, Framer Motion, React Router
-- **Backend:** Express, Mongoose, Helmet, CORS, compression, rate limiting
-- **Database:** MongoDB Atlas
-- **Deployment:** 
-  - Frontend: Vercel
-  - Backend: Node.js host (Render, Railway, or Fly.io)
+## 3. THE PROBLEMS I HELP SOLVE
+Businesses and entrepreneurs come to me with challenges such as:
+- Needing to establish or improve their online presence
+- Wanting to digitize manual business processes
+- Having a business idea but needing help turning it into a working product
+- Requiring a website that actually serves business goals (not just looks good)
+- Needing better customer engagement or service delivery through digital channels
+- Looking to improve existing digital products or websites
+- Wanting to build internal tools to improve operational efficiency
+- Seeking to create customer-facing applications that solve specific problems
 
-### Key Features
-- Fully responsive design with animated sections
-- Dynamic content loading from REST API (projects, skills, testimonials)
-- Multilingual support (English and French)
-- Light and dark theme toggle
-- Vercel-ready frontend build
-- MongoDB persistence for all portfolio data
+## 4. WHO I HELP
+I primarily work with:
+- Small and medium-sized business owners who need effective digital solutions
+- Entrepreneurs and founders with business ideas needing technical execution
+- Startups looking to build their first product or improve existing ones
+- Organizations wanting to improve their digital presence or internal processes
+- Businesses with specific operational challenges that technology can address
 
-## Projects
-The portfolio showcases the following projects:
+## 5. WHAT I CAN HELP BUSINESSES BUILD
+Depending on the business problem, I can help create:
+- Professional business websites that serve specific business goals
+- Web applications that solve particular business problems
+- Customer-facing digital products and platforms
+- Internal business tools to improve efficiency
+- Digital workflow solutions
+- Minimum viable products (MVPs) for business ideas
+- Improved versions of existing digital solutions
 
-1. **YACSN**
-   - Description: Modern, fully responsive corporate website developed with WordPress for York Air Conditioning's official representative in Nigeria. Designed to strengthen brand presence, improve user engagement, and showcase products and dealer information with a clean, professional interface.
-   - Technologies: WordPress, HTML, CSS, JavaScript, PHP
-   - Category: Web
-   - Featured: Yes
-   - Live URL: https://yacsn.com/
-   - GitHub: https://github.com/simon-azike1
+## 6. BUSINESS WEBSITES & DIGITAL PRESENCE
+For businesses needing to establish or improve their online presence, I help create websites that:
+- Clearly communicate the business value proposition
+- Serve specific business functions (information, lead generation, customer service, etc.)
+- Are responsive and work well on all devices
+- Include features like multilingual support (English/French) and light/dark theme toggles when needed
+- Provide a professional first impression
+- Can be easily maintained and updated
+- Examples from portfolio: YACSN (corporate website), Mercel Life (designer portfolio)
 
-2. **Barber Booking App**
-   - Description: Full-stack web app for booking grooming sessions and managing appointments online. Built with React, Node.js, and MongoDB for smooth, responsive performance.
-   - Technologies: React, Node.js, MongoDB, CSS
-   - Category: Web
-   - Featured: Yes
-   - Live URL: https://barber-shop-web-app-mhma.vercel.app/
-   - GitHub: https://github.com/simon-azike1/barberShopWebApp
+## 7. BUSINESS IDEAS → DIGITAL PRODUCTS
+For entrepreneurs with ideas, I help with:
+- Understanding the problem the idea solves
+- Defining what the digital product needs to do
+- Planning appropriate features and functionality
+- Turning concepts into working digital products
+- Building MVPs to test ideas in the market
+- Examples from portfolio: Barber Booking App (appointment booking), Util (utility management), Product Management App (inventory tracking)
 
-3. **Mercel Life**
-   - Description: Modern and responsive portfolio website for a UX/UI designer, built with React and Tailwind CSS to showcase projects and design work beautifully.
-   - Technologies: React, Tailwind CSS, Framer Motion
-   - Category: Design
-   - Featured: No
-   - Live URL: https://mercel-life.vercel.app/
-   - GitHub: https://github.com/simon-azike1/Mercel-Life
+## 8. HOW I APPROACH PROJECTS
+My approach focuses on understanding the business first:
+1. **Discovery**: Understanding the business, problem, goals, and users
+2. **Definition**: Clarifying what needs to be built and why
+3. **Planning**: Determining the right solution and approach
+4. **Execution**: Building the solution using appropriate technologies
+5. **Delivery**: Providing a working solution that addresses the business need
+Throughout this process, I maintain clear communication and focus on delivering value.
 
-4. **The Recipe Book**
-   - Description: Web app that displays categorized recipes with ingredients and steps. Built using Vanilla JavaScript and responsive CSS.
-   - Technologies: JavaScript, CSS, HTML, API
-   - Category: Web
-   - Featured: Yes
-   - Live URL: https://therecipebook-liard.vercel.app/
-   - GitHub: https://github.com/simon-azike1/THERECIPEBOOK
+## 9. DISCOVERY & CONSULTATION
+Before recommending any technology or solution, I seek to understand:
+- What the business does and who its customers are
+- What specific problem or goal needs to be addressed
+- How the problem is currently being handled
+- What success would look like
+- Any existing systems or websites
+- Budget, timeline, and technical constraints
+This ensures the recommended solution actually solves the business problem.
 
-5. **Chetro**
-   - Description: Task management app that helps users organize and categorize daily activities efficiently for better productivity.
-   - Technologies: HTML, CSS, JavaScript
-   - Category: Web
-   - Featured: No
-   - Live URL: https://task-management-app-omega-flax.vercel.app/
-   - GitHub: https://github.com/simon-azike1/Blog-Page
+## 10. SERVICES & CAPABILITIES
+My capabilities center around solving business problems through technology:
+- **Business Consultation**: Understanding needs and recommending appropriate digital approaches
+- **Website Development**: Creating business websites that serve specific purposes
+- **Web Application Development**: Building applications that solve business problems
+- **Product Development**: Turning business ideas into working digital products
+- **Process Digitization**: Converting manual processes to digital workflows
+- **Website Improvement**: Enhancing existing websites for better performance or functionality
+- **Technical Consultation**: Advising on technology choices and implementation approaches
 
-6. **Util**
-   - Description: House utility management system that automates budgeting, expense tracking, and contributions for shared apartments. Built from personal experience managing utilities manually.
-   - Technologies: React, API, CSS, JavaScript
-   - Category: Web
-   - Featured: Yes
-   - Live URL: https://house-utility-app.vercel.app/
-   - GitHub: https://github.com/simon-azike1/HouseUtility-App
+## 11. PRICING
+💻 SIMZIKTECH — WEBSITE PACKAGES
 
-7. **DeHire Ventures**
-   - Description: Dynamic web application for a logistics company featuring recruitment management and modern branding built with React and MongoDB.
-   - Technologies: React, Node.js, Express, MongoDB
-   - Category: Web
-   - Featured: Yes
-   - Live URL: https://hrms-client-self.vercel.app/
-   - GitHub: https://github.com/samzik234/HRMS
+STARTER — From $150
 
-8. **Product Management App**
-   - Description: React-based inventory management system with product addition, viewing, searching, and deletion features.
-   - Technologies: React, Firebase, CSS, JavaScript
-   - Category: Web
-   - Featured: Yes
-   - Live URL: https://product-management-app-kl4b.vercel.app/
-   - GitHub: https://github.com/simon-azike1/product-management-app
+Single-page website
+Contact form
+Mobile responsive
+Basic AI integration available
 
-9. **MovieMania**
-   - Description: Movie database app that fetches and displays movie details via API, with search and filtering options in a clean UI.
-   - Technologies: HTML, CSS, JavaScript
-   - Category: Web
-   - Featured: Yes
-   - Live URL: https://movie-mania-drab-six.vercel.app/
-   - GitHub: https://github.com/samzik234/MovieMania
+STANDARD — From $350
 
-## Skills
-Technical skills organized by category with proficiency levels:
+Up to 5 pages
+Gallery
+Booking form
+Basic SEO
+AI chatbot / customer enquiry integration
 
-### Frontend
-- **JavaScript**: Intermediate (50%), 2+ years experience
-- **React.js**: Intermediate (65%), 2+ years experience
-- **HTML5**: Expert (75%), 3+ years experience
-- **CSS3**: Advanced (70%), 3+ years experience
+PREMIUM — From $700
 
-### Backend
-- **Node.js**: Intermediate (75%), 2+ years experience
-- **MongoDB**: Intermediate (65%), 2+ years experience
-- **ElasticSearch**: Intermediate (55%), 1+ year experience
+Online store or booking system
+Admin dashboard
+Advanced AI integrations
+Automation & customer support features
+Ongoing support
+🤖 AI INTEGRATIONS
 
-### Tools
-- **AI API Integration**: Intermediate (60%), 1+ year experience
-- **Prompt Engineering**: Intermediate (60%), 1+ year experience
-- **Retrieval-Augmented Generation (RAG)**: Beginner (45%), Learning
+Available as an add-on or included depending on your package.
 
-## Testimonials
-Client feedback highlighting professionalism and expertise:
+AI can help your website:
 
-1. **Mr Quadri Kobiowu** (Senior Software Engineer, DevQuat)
-    - Rating: 5/5
-    - Content: "Working with Simon was an absolute pleasure. His attention to detail and commitment to delivering high-quality work exceeded our expectations. The project was completed on time and the results speak for themselves."
+Answer customer questions
+Capture and qualify leads
+Automate repetitive tasks
+Provide 24/7 customer support
+Recommend products or services
 
-2. **Mrs Bolaji Egogo** (Product Manager, YACSN)
-    - Rating: 5/5
-    - Content: "Simon's technical expertise and problem-solving skills are outstanding. He transformed our complex requirements into an elegant, user-friendly solution. Highly recommended for any web development project."
+Small note for the flyer:
+AI integration scope and third-party AI/API costs may vary depending on the requirements.
 
-3. **Mercelina Adebisi** (UI/UX Designer)
-    - Rating: 5/5
-    - Content: "Exceptional developer with great communication skills. Simon not only built our application but also provided valuable insights that improved the overall product. Looking forward to working together again."
+This keeps your $150 / $350 / $700 pricing intact while making AI a clear part of what SimzikTech offers.
 
-## Contact Information
-- Professional Networks: 
+## 12. PORTFOLIO / PROJECTS
+Each project in my portfolio represents a solution to a specific business problem:
+
+**YACSN**: Corporate website for York Air Conditioning's Nigerian representative
+- Business Problem: Needed to strengthen brand presence, improve user engagement, and showcase products/dealer information
+- Solution: Modern, responsive corporate website built with WordPress
+- Technologies: WordPress, HTML, CSS, JavaScript, PHP
+
+**Barber Booking App**: Online booking system for grooming services
+- Business Problem: Needed a way to book grooming sessions and manage appointments online
+- Solution: Full-stack web app for booking and appointment management
+- Technologies: React, Node.js, MongoDB, CSS
+
+**Mercel Life**: Portfolio website for a UX/UI designer
+- Business Problem: Needed to showcase design work and projects beautifully online
+- Solution: Modern, responsive portfolio website
+- Technologies: React, Tailwind CSS, Framer Motion
+
+**The Recipe Book**: Recipe categorization and display web app
+- Business Problem: Needed to display recipes with ingredients and steps in an organized way
+- Solution: Web app for categorized recipes with ingredients and steps
+- Technologies: JavaScript, CSS, HTML, API
+
+**Chetro**: Task management application
+- Business Problem: Needed to organize and categorize daily activities for better productivity
+- Solution: Task management app for organizing daily activities
+- Technologies: HTML, CSS, JavaScript
+
+**Util**: House utility management system
+- Business Problem: Needed to automate budgeting, expense tracking, and contributions for shared apartments
+- Solution: Utility management system for shared apartments
+- Technologies: React, API, CSS, JavaScript
+
+**DeHire Ventures**: Recruitment management system for logistics company
+- Business Problem: Needed recruitment management and modern branding for a logistics company
+- Solution: Dynamic web application with recruitment management
+- Technologies: React, Node.js, Express, MongoDB
+
+**Product Management App**: Inventory management system
+- Business Problem: Needed product addition, viewing, searching, and deletion features
+- Solution: React-based inventory management system
+- Technologies: React, Firebase, CSS, JavaScript
+
+**MovieMania**: Movie database application
+- Business Problem: Needed to fetch and display movie details via API with search/filtering
+- Solution: Movie database app with search and filtering options
+- Technologies: HTML, CSS, JavaScript
+
+## 12. TECHNICAL SKILLS
+For technical visitors, here are the technologies I work with:
+- **Frontend**: JavaScript (Intermediate), React.js (Intermediate), HTML5 (Expert), CSS3 (Advanced)
+- **Backend**: Node.js (Intermediate), MongoDB (Interactive), ElasticSearch (Intermediate)
+- **Tools & Integration**: API Integration (Intermediate), Prompt Engineering (Intermediate), Retrieval-Augmented Generation (RAG - Beginner/Learning)
+- **Development Practices**: REST API development, Responsive design, Version control (Git/GitHub)
+- **Deployment**: Vercel (frontend), Node.js hosting (Render, Railway, Fly.io)
+- **Databases**: MongoDB Atlas
+
+## 13. EDUCATION & PROFESSIONAL BACKGROUND
+- **Professional Experience**: 3+ years as a Full-Stack Developer
+- **Entrepreneurial Experience**: Founder and lead developer of multiple web applications; Co-founder of SabiIQ, EuroCab Connect, Vnex, and other ongoing projects
+- **Core Expertise**: Full product lifecycle from concept to deployment; Understanding business needs and market-driven development
+- **Communication**: Experienced presenter at tech meetups; Skilled in explaining technical concepts to diverse audiences; Strong written and verbal communication abilities
+- **Community**: Active participant in developer communities and knowledge sharing
+
+## 14. CONTACT / NEXT STEPS
+If you have a business problem, idea, or project you'd like to discuss:
+- **Primary Contact**: Use the contact form on the portfolio website
+- **Professional Networks**: 
   - GitHub: https://github.com/simon-azike1
-  - LinkedIn: https://linkedin.com/in/simon-azike (example - update with actual link)
+  - LinkedIn: https://linkedin.com/in/simon-azike (update with actual link)
   - WhatsApp: Available via portfolio contact form
-- Portfolio Contact: Available through the contact form on the portfolio website
-- Availability: Open to freelance projects, full-time positions, and collaborations
+- **Availability**: Open to discussing freelance projects, full-time positions, and collaborations
+- **Next Step**: Reach out to describe your business problem or idea, and I'll help you understand what digital solution makes sense
 
-## Professional Experience
-- Simon Azike has been working as a Full-Stack Developer for 3+ years
-- Expertise spans frontend, backend, and database technologies
-- Proven track record delivering web applications for clients across industries
+## 15. AI ASSISTANT BEHAVIOR GUIDELINES
+When assisting visitors, this AI should:
+- **Lead with business problems**: Start by understanding what the visitor is trying to achieve
+- **Ask relevant questions**: Only ask what's needed to understand the problem and recommend direction
+- **Focus on solutions**: Explain how technology can help accomplish business goals
+- **Adapt to audience**: 
+  - Business owners: Focus on problems, solutions, value, process
+  - Entrepreneurs: Focus on idea validation, product development steps
+  - Technical professionals: Provide relevant technical details when appropriate
+  - Recruiters: Summarize background, skills, and experience accurately
+- **Never invent information**: Only use facts from this knowledge base
+- **Be helpful and practical**: Guide visitors toward appropriate next steps (such as contacting Simon via the portfolio website contact form or professional networks after understanding their needs)
+- **Avoid technical jargon with non-technical visitors**: Explain technology in terms of business value
+- **Recognize genuine interest**: Naturally guide interested visitors toward contact options (contact form, GitHub, LinkedIn, WhatsApp via portfolio website)
+- **Maintain professionalism**: Be clear, honest, approachable, and business-minded
 
-## Additional Information
-### Setup & Deployment
-- **Local Development:** 
-  - Requires Node.js 20+, npm 10+, MongoDB Atlas
-  - Instructions in README.md for cloning, installing dependencies, environment setup, and running `npm run dev`
-- **Deployment:**
-  - Frontend deployed to Vercel with `npm run build` output to `dist` directory
-  - Backend deployable to any Node.js hosting service (Render, Railway, Fly.io)
-
-### Public Speaking & Communication
-- Experienced presenter at tech meetups and conferences
-- Skilled in explaining complex technical concepts to diverse audiences
-- Strong written and verbal communication abilities
-- Active participant in developer communities and knowledge sharing
-
-### Entrepreneurship
-- Founder and lead developer of multiple web applications
-- Co-founder of SabiIQ, EuroCab Connect, Vnex, and other ongoing projects
-- Experience in full product lifecycle from concept to deployment
-- Understanding of business needs and market-driven development
-- Passionate about creating solutions that solve real-world problems
-
-This knowledge base provides comprehensive information about Simon Azike's professional portfolio, technical capabilities, and project history for use by AI assistants to answer visitor inquiries.
+This knowledge base provides the foundation for an AI assistant that functions as a helpful first point of contact for understanding Simon Azike's business-focused technology services and how they can help solve real business problems.
