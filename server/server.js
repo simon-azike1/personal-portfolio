@@ -86,14 +86,24 @@ if (process.env.NODE_ENV!== 'production') {
 
 // CORS
 const allowedOrigins = (process.env.ALLOWED_ORIGINS || 'https://personal-portfolio-ten-lime-93.vercel.app,http://localhost:5173,http://localhost:5174')
- .split(',')
- .map((origin) => origin.trim());
+  .split(',')
+  .map(o => o.trim())
+  .filter(Boolean);
 
 app.use(cors({
   origin(origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
+    if (!origin) return callback(null, true); // curl / postman
+
+    // allow exact matches + ANY vercel.app preview + localhost
+    const isAllowed = 
+      allowedOrigins.includes(origin) ||
+      origin.endsWith('.vercel.app') ||
+      origin.includes('localhost');
+
+    if (isAllowed) {
       return callback(null, true);
     }
+    console.log(`CORS blocked origin: ${origin}`);
     return callback(new Error('Not allowed by CORS'));
   },
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
